@@ -1,4 +1,4 @@
-baby-proof-pics
+BabyProofPics
 ===============
 
 Baby Proof Pics iOS app.
