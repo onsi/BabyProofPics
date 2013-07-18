@@ -1,0 +1,520 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E358AF461794D85C00DDC769 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF451794D85C00DDC769 /* Foundation.framework */; };
+		E358AF481794D85C00DDC769 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF471794D85C00DDC769 /* CoreGraphics.framework */; };
+		E358AF4A1794D85C00DDC769 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF491794D85C00DDC769 /* UIKit.framework */; };
+		E358AF501794D85C00DDC769 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E358AF4E1794D85C00DDC769 /* InfoPlist.strings */; };
+		E358AF521794D85C00DDC769 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E358AF511794D85C00DDC769 /* main.m */; };
+		E358AF561794D85C00DDC769 /* BPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E358AF551794D85C00DDC769 /* BPAppDelegate.m */; };
+		E358AF581794D85C00DDC769 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E358AF571794D85C00DDC769 /* Images.xcassets */; };
+		E358AF5F1794D85C00DDC769 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF5E1794D85C00DDC769 /* XCTest.framework */; };
+		E358AF601794D85C00DDC769 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF451794D85C00DDC769 /* Foundation.framework */; };
+		E358AF611794D85C00DDC769 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF491794D85C00DDC769 /* UIKit.framework */; };
+		E358AF691794D85C00DDC769 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E358AF671794D85C00DDC769 /* InfoPlist.strings */; };
+		E358AF6B1794D85C00DDC769 /* BabyProofPhotosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E358AF6A1794D85C00DDC769 /* BabyProofPhotosTests.m */; };
+		E3A6B1F517964B7D008AF491 /* BPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A6B1F317964B7D008AF491 /* BPHomeViewController.m */; };
+		E3A6B1F617964B7D008AF491 /* BPHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3A6B1F417964B7D008AF491 /* BPHomeViewController.xib */; };
+		E3AD52091796F06C00E81A9D /* BPTappableCircularView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD52081796F06C00E81A9D /* BPTappableCircularView.m */; };
+		E3AD520D17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD520B17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m */; };
+		E3AD520E17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3AD520C17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib */; };
+		E3B49E4217962BC1002A779D /* BPVideoFeedProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B49E4117962BC1002A779D /* BPVideoFeedProvider.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E358AF621794D85C00DDC769 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E358AF3A1794D85C00DDC769 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E358AF411794D85C00DDC769;
+			remoteInfo = BabyProofPhotos;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E358AF421794D85C00DDC769 /* BabyProofPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyProofPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E358AF451794D85C00DDC769 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E358AF471794D85C00DDC769 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E358AF491794D85C00DDC769 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E358AF4D1794D85C00DDC769 /* BabyProofPhotos-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BabyProofPhotos-Info.plist"; sourceTree = "<group>"; };
+		E358AF4F1794D85C00DDC769 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E358AF511794D85C00DDC769 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E358AF531794D85C00DDC769 /* BabyProofPhotos-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BabyProofPhotos-Prefix.pch"; sourceTree = "<group>"; };
+		E358AF541794D85C00DDC769 /* BPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPAppDelegate.h; sourceTree = "<group>"; };
+		E358AF551794D85C00DDC769 /* BPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BPAppDelegate.m; sourceTree = "<group>"; };
+		E358AF571794D85C00DDC769 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E358AF5D1794D85C00DDC769 /* BabyProofPhotosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BabyProofPhotosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E358AF5E1794D85C00DDC769 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		E358AF661794D85C00DDC769 /* BabyProofPhotosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BabyProofPhotosTests-Info.plist"; sourceTree = "<group>"; };
+		E358AF681794D85C00DDC769 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E358AF6A1794D85C00DDC769 /* BabyProofPhotosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BabyProofPhotosTests.m; sourceTree = "<group>"; };
+		E3A6B1F217964B7D008AF491 /* BPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPHomeViewController.h; sourceTree = "<group>"; };
+		E3A6B1F317964B7D008AF491 /* BPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPHomeViewController.m; sourceTree = "<group>"; };
+		E3A6B1F417964B7D008AF491 /* BPHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BPHomeViewController.xib; sourceTree = "<group>"; };
+		E3AD52071796F06C00E81A9D /* BPTappableCircularView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPTappableCircularView.h; sourceTree = "<group>"; };
+		E3AD52081796F06C00E81A9D /* BPTappableCircularView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPTappableCircularView.m; sourceTree = "<group>"; };
+		E3AD520A17977F5700E81A9D /* BPFullScreenVideoFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFullScreenVideoFeedViewController.h; sourceTree = "<group>"; };
+		E3AD520B17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFullScreenVideoFeedViewController.m; sourceTree = "<group>"; };
+		E3AD520C17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BPFullScreenVideoFeedViewController.xib; sourceTree = "<group>"; };
+		E3B49E4017962BC1002A779D /* BPVideoFeedProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPVideoFeedProvider.h; sourceTree = "<group>"; };
+		E3B49E4117962BC1002A779D /* BPVideoFeedProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPVideoFeedProvider.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E358AF3F1794D85C00DDC769 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E358AF481794D85C00DDC769 /* CoreGraphics.framework in Frameworks */,
+				E358AF4A1794D85C00DDC769 /* UIKit.framework in Frameworks */,
+				E358AF461794D85C00DDC769 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E358AF5A1794D85C00DDC769 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E358AF5F1794D85C00DDC769 /* XCTest.framework in Frameworks */,
+				E358AF611794D85C00DDC769 /* UIKit.framework in Frameworks */,
+				E358AF601794D85C00DDC769 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E358AF391794D85C00DDC769 = {
+			isa = PBXGroup;
+			children = (
+				E358AF4B1794D85C00DDC769 /* BabyProofPhotos */,
+				E358AF641794D85C00DDC769 /* BabyProofPhotosTests */,
+				E358AF441794D85C00DDC769 /* Frameworks */,
+				E358AF431794D85C00DDC769 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E358AF431794D85C00DDC769 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E358AF421794D85C00DDC769 /* BabyProofPhotos.app */,
+				E358AF5D1794D85C00DDC769 /* BabyProofPhotosTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E358AF441794D85C00DDC769 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E358AF451794D85C00DDC769 /* Foundation.framework */,
+				E358AF471794D85C00DDC769 /* CoreGraphics.framework */,
+				E358AF491794D85C00DDC769 /* UIKit.framework */,
+				E358AF5E1794D85C00DDC769 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E358AF4B1794D85C00DDC769 /* BabyProofPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				E3AD52061796F04100E81A9D /* Views */,
+				E3A6B1F117964B5D008AF491 /* Controllers */,
+				E3B49E3F17962BA0002A779D /* Lib */,
+				E358AF541794D85C00DDC769 /* BPAppDelegate.h */,
+				E358AF551794D85C00DDC769 /* BPAppDelegate.m */,
+				E358AF571794D85C00DDC769 /* Images.xcassets */,
+				E358AF4C1794D85C00DDC769 /* Supporting Files */,
+			);
+			path = BabyProofPhotos;
+			sourceTree = "<group>";
+		};
+		E358AF4C1794D85C00DDC769 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E358AF4D1794D85C00DDC769 /* BabyProofPhotos-Info.plist */,
+				E358AF4E1794D85C00DDC769 /* InfoPlist.strings */,
+				E358AF511794D85C00DDC769 /* main.m */,
+				E358AF531794D85C00DDC769 /* BabyProofPhotos-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E358AF641794D85C00DDC769 /* BabyProofPhotosTests */ = {
+			isa = PBXGroup;
+			children = (
+				E358AF6A1794D85C00DDC769 /* BabyProofPhotosTests.m */,
+				E358AF651794D85C00DDC769 /* Supporting Files */,
+			);
+			path = BabyProofPhotosTests;
+			sourceTree = "<group>";
+		};
+		E358AF651794D85C00DDC769 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E358AF661794D85C00DDC769 /* BabyProofPhotosTests-Info.plist */,
+				E358AF671794D85C00DDC769 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E3A6B1F117964B5D008AF491 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E3A6B1F217964B7D008AF491 /* BPHomeViewController.h */,
+				E3A6B1F317964B7D008AF491 /* BPHomeViewController.m */,
+				E3A6B1F417964B7D008AF491 /* BPHomeViewController.xib */,
+				E3AD520A17977F5700E81A9D /* BPFullScreenVideoFeedViewController.h */,
+				E3AD520B17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m */,
+				E3AD520C17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E3AD52061796F04100E81A9D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E3AD52071796F06C00E81A9D /* BPTappableCircularView.h */,
+				E3AD52081796F06C00E81A9D /* BPTappableCircularView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E3B49E3F17962BA0002A779D /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				E3B49E4017962BC1002A779D /* BPVideoFeedProvider.h */,
+				E3B49E4117962BC1002A779D /* BPVideoFeedProvider.m */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E358AF411794D85C00DDC769 /* BabyProofPhotos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E358AF6E1794D85C00DDC769 /* Build configuration list for PBXNativeTarget "BabyProofPhotos" */;
+			buildPhases = (
+				E358AF3E1794D85C00DDC769 /* Sources */,
+				E358AF3F1794D85C00DDC769 /* Frameworks */,
+				E358AF401794D85C00DDC769 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BabyProofPhotos;
+			productName = BabyProofPhotos;
+			productReference = E358AF421794D85C00DDC769 /* BabyProofPhotos.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E358AF5C1794D85C00DDC769 /* BabyProofPhotosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E358AF711794D85C00DDC769 /* Build configuration list for PBXNativeTarget "BabyProofPhotosTests" */;
+			buildPhases = (
+				E358AF591794D85C00DDC769 /* Sources */,
+				E358AF5A1794D85C00DDC769 /* Frameworks */,
+				E358AF5B1794D85C00DDC769 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E358AF631794D85C00DDC769 /* PBXTargetDependency */,
+			);
+			name = BabyProofPhotosTests;
+			productName = BabyProofPhotosTests;
+			productReference = E358AF5D1794D85C00DDC769 /* BabyProofPhotosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E358AF3A1794D85C00DDC769 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BP;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Onsi Fakhouri";
+				TargetAttributes = {
+					E358AF411794D85C00DDC769 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
+					E358AF5C1794D85C00DDC769 = {
+						TestTargetID = E358AF411794D85C00DDC769;
+					};
+				};
+			};
+			buildConfigurationList = E358AF3D1794D85C00DDC769 /* Build configuration list for PBXProject "BabyProofPhotos" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E358AF391794D85C00DDC769;
+			productRefGroup = E358AF431794D85C00DDC769 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E358AF411794D85C00DDC769 /* BabyProofPhotos */,
+				E358AF5C1794D85C00DDC769 /* BabyProofPhotosTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E358AF401794D85C00DDC769 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3A6B1F617964B7D008AF491 /* BPHomeViewController.xib in Resources */,
+				E358AF501794D85C00DDC769 /* InfoPlist.strings in Resources */,
+				E358AF581794D85C00DDC769 /* Images.xcassets in Resources */,
+				E3AD520E17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E358AF5B1794D85C00DDC769 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E358AF691794D85C00DDC769 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E358AF3E1794D85C00DDC769 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E358AF561794D85C00DDC769 /* BPAppDelegate.m in Sources */,
+				E3AD52091796F06C00E81A9D /* BPTappableCircularView.m in Sources */,
+				E3B49E4217962BC1002A779D /* BPVideoFeedProvider.m in Sources */,
+				E358AF521794D85C00DDC769 /* main.m in Sources */,
+				E3A6B1F517964B7D008AF491 /* BPHomeViewController.m in Sources */,
+				E3AD520D17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E358AF591794D85C00DDC769 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E358AF6B1794D85C00DDC769 /* BabyProofPhotosTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E358AF631794D85C00DDC769 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E358AF411794D85C00DDC769 /* BabyProofPhotos */;
+			targetProxy = E358AF621794D85C00DDC769 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E358AF4E1794D85C00DDC769 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E358AF4F1794D85C00DDC769 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E358AF671794D85C00DDC769 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E358AF681794D85C00DDC769 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E358AF6C1794D85C00DDC769 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		E358AF6D1794D85C00DDC769 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E358AF6F1794D85C00DDC769 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BabyProofPhotos/BabyProofPhotos-Prefix.pch";
+				INFOPLIST_FILE = "BabyProofPhotos/BabyProofPhotos-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E358AF701794D85C00DDC769 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BabyProofPhotos/BabyProofPhotos-Prefix.pch";
+				INFOPLIST_FILE = "BabyProofPhotos/BabyProofPhotos-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E358AF721794D85C00DDC769 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BabyProofPhotos.app/BabyProofPhotos";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BabyProofPhotos/BabyProofPhotos-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "BabyProofPhotosTests/BabyProofPhotosTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		E358AF731794D85C00DDC769 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BabyProofPhotos.app/BabyProofPhotos";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BabyProofPhotos/BabyProofPhotos-Prefix.pch";
+				INFOPLIST_FILE = "BabyProofPhotosTests/BabyProofPhotosTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E358AF3D1794D85C00DDC769 /* Build configuration list for PBXProject "BabyProofPhotos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E358AF6C1794D85C00DDC769 /* Debug */,
+				E358AF6D1794D85C00DDC769 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E358AF6E1794D85C00DDC769 /* Build configuration list for PBXNativeTarget "BabyProofPhotos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E358AF6F1794D85C00DDC769 /* Debug */,
+				E358AF701794D85C00DDC769 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E358AF711794D85C00DDC769 /* Build configuration list for PBXNativeTarget "BabyProofPhotosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E358AF721794D85C00DDC769 /* Debug */,
+				E358AF731794D85C00DDC769 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E358AF3A1794D85C00DDC769 /* Project object */;
+}
