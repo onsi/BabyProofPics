@@ -51,7 +51,6 @@
     [self.videoFeedContainer.layer addSublayer:self.videoFeedLayer];
 }
 
-
 - (void)setUpTapHandlers
 {
     [self.videoFeedContainer setTapTarget:self action:@selector(didTapVideoFeed:)];
