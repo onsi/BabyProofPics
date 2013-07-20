@@ -10,4 +10,6 @@
 
 @interface BPFullScreenVideoFeedViewController : UIViewController
 
+- (id)initWithVideoFeedLayer:(CALayer *)videoFeedLayer;
+
 @end

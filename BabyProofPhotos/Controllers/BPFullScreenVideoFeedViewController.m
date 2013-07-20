@@ -7,7 +7,6 @@
 //
 
 #import "BPFullScreenVideoFeedViewController.h"
-#import "BPVideoFeedProvider.h"
 
 @interface BPFullScreenVideoFeedViewController ()
 
@@ -17,6 +16,16 @@
 
 @implementation BPFullScreenVideoFeedViewController
 
+- (id)initWithVideoFeedLayer:(CALayer *)videoFeedLayer
+{
+    self = [super init];
+    if (self) {
+        self.videoFeedLayer = videoFeedLayer;
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -25,16 +34,14 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self setUpVideoFeed];
+    [self installVideoFeed];
 }
 
 #pragma mark - View SetUp
 
-- (void)setUpVideoFeed
+- (void)installVideoFeed
 {
     [self.videoFeedLayer removeFromSuperlayer];
-    
-    self.videoFeedLayer = [[BPVideoFeedProvider provider] videoFeedLayer];
     self.videoFeedLayer.frame = self.view.bounds;
     [self.view.layer addSublayer:self.videoFeedLayer];
 }

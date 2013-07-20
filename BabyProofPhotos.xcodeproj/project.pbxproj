@@ -26,6 +26,8 @@
 		E3AD520E17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3AD520C17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib */; };
 		E3AD521B1798C68600E81A9D /* BPCircularTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD521A1798C68600E81A9D /* BPCircularTapGestureRecognizer.m */; };
 		E3AD5224179A1F9D00E81A9D /* BPScratch.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD5223179A1F9D00E81A9D /* BPScratch.m */; };
+		E3AD5228179AF84C00E81A9D /* BPBreezyBubblesSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD5227179AF84C00E81A9D /* BPBreezyBubblesSimulator.m */; };
+		E3AD522B179B388C00E81A9D /* BPMath.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD522A179B388C00E81A9D /* BPMath.m */; };
 		E3B49E4217962BC1002A779D /* BPVideoFeedProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B49E4117962BC1002A779D /* BPVideoFeedProvider.m */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,10 @@
 		E3AD521A1798C68600E81A9D /* BPCircularTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPCircularTapGestureRecognizer.m; sourceTree = "<group>"; };
 		E3AD5222179A1F9D00E81A9D /* BPScratch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPScratch.h; sourceTree = "<group>"; };
 		E3AD5223179A1F9D00E81A9D /* BPScratch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPScratch.m; sourceTree = "<group>"; };
+		E3AD5226179AF84C00E81A9D /* BPBreezyBubblesSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPBreezyBubblesSimulator.h; sourceTree = "<group>"; };
+		E3AD5227179AF84C00E81A9D /* BPBreezyBubblesSimulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPBreezyBubblesSimulator.m; sourceTree = "<group>"; };
+		E3AD5229179B388C00E81A9D /* BPMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPMath.h; sourceTree = "<group>"; };
+		E3AD522A179B388C00E81A9D /* BPMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPMath.m; sourceTree = "<group>"; };
 		E3B49E4017962BC1002A779D /* BPVideoFeedProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPVideoFeedProvider.h; sourceTree = "<group>"; };
 		E3B49E4117962BC1002A779D /* BPVideoFeedProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPVideoFeedProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +135,7 @@
 		E358AF4B1794D85C00DDC769 /* BabyProofPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				E3AD5225179AF83600E81A9D /* AnimationAndPolish */,
 				E3AD52181798C67900E81A9D /* GestureRecognizers */,
 				E3AD52061796F04100E81A9D /* Views */,
 				E3A6B1F117964B5D008AF491 /* Controllers */,
@@ -201,6 +208,15 @@
 			path = GestureRecognizers;
 			sourceTree = "<group>";
 		};
+		E3AD5225179AF83600E81A9D /* AnimationAndPolish */ = {
+			isa = PBXGroup;
+			children = (
+				E3AD5226179AF84C00E81A9D /* BPBreezyBubblesSimulator.h */,
+				E3AD5227179AF84C00E81A9D /* BPBreezyBubblesSimulator.m */,
+			);
+			path = AnimationAndPolish;
+			sourceTree = "<group>";
+		};
 		E3B49E3F17962BA0002A779D /* Lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +224,8 @@
 				E3B49E4117962BC1002A779D /* BPVideoFeedProvider.m */,
 				E3AD5222179A1F9D00E81A9D /* BPScratch.h */,
 				E3AD5223179A1F9D00E81A9D /* BPScratch.m */,
+				E3AD5229179B388C00E81A9D /* BPMath.h */,
+				E3AD522A179B388C00E81A9D /* BPMath.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -318,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3AD5224179A1F9D00E81A9D /* BPScratch.m in Sources */,
+				E3AD5228179AF84C00E81A9D /* BPBreezyBubblesSimulator.m in Sources */,
 				E358AF561794D85C00DDC769 /* BPAppDelegate.m in Sources */,
 				E3AD521B1798C68600E81A9D /* BPCircularTapGestureRecognizer.m in Sources */,
 				E3AD52091796F06C00E81A9D /* BPTappableCircularView.m in Sources */,
@@ -325,6 +344,7 @@
 				E358AF521794D85C00DDC769 /* main.m in Sources */,
 				E3A6B1F517964B7D008AF491 /* BPHomeViewController.m in Sources */,
 				E3AD520D17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m in Sources */,
+				E3AD522B179B388C00E81A9D /* BPMath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
