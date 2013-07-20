@@ -24,7 +24,7 @@
 		E3AD52091796F06C00E81A9D /* BPTappableCircularView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD52081796F06C00E81A9D /* BPTappableCircularView.m */; };
 		E3AD520D17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD520B17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m */; };
 		E3AD520E17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3AD520C17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib */; };
-		E3AD521B1798C68600E81A9D /* BPTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD521A1798C68600E81A9D /* BPTapGestureRecognizer.m */; };
+		E3AD521B1798C68600E81A9D /* BPCircularTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD521A1798C68600E81A9D /* BPCircularTapGestureRecognizer.m */; };
 		E3AD5224179A1F9D00E81A9D /* BPScratch.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD5223179A1F9D00E81A9D /* BPScratch.m */; };
 		E3B49E4217962BC1002A779D /* BPVideoFeedProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B49E4117962BC1002A779D /* BPVideoFeedProvider.m */; };
 /* End PBXBuildFile section */
@@ -64,8 +64,8 @@
 		E3AD520A17977F5700E81A9D /* BPFullScreenVideoFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFullScreenVideoFeedViewController.h; sourceTree = "<group>"; };
 		E3AD520B17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFullScreenVideoFeedViewController.m; sourceTree = "<group>"; };
 		E3AD520C17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BPFullScreenVideoFeedViewController.xib; sourceTree = "<group>"; };
-		E3AD52191798C68600E81A9D /* BPTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPTapGestureRecognizer.h; sourceTree = "<group>"; };
-		E3AD521A1798C68600E81A9D /* BPTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPTapGestureRecognizer.m; sourceTree = "<group>"; };
+		E3AD52191798C68600E81A9D /* BPCircularTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPCircularTapGestureRecognizer.h; sourceTree = "<group>"; };
+		E3AD521A1798C68600E81A9D /* BPCircularTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPCircularTapGestureRecognizer.m; sourceTree = "<group>"; };
 		E3AD5222179A1F9D00E81A9D /* BPScratch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPScratch.h; sourceTree = "<group>"; };
 		E3AD5223179A1F9D00E81A9D /* BPScratch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPScratch.m; sourceTree = "<group>"; };
 		E3B49E4017962BC1002A779D /* BPVideoFeedProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPVideoFeedProvider.h; sourceTree = "<group>"; };
@@ -195,8 +195,8 @@
 		E3AD52181798C67900E81A9D /* GestureRecognizers */ = {
 			isa = PBXGroup;
 			children = (
-				E3AD52191798C68600E81A9D /* BPTapGestureRecognizer.h */,
-				E3AD521A1798C68600E81A9D /* BPTapGestureRecognizer.m */,
+				E3AD52191798C68600E81A9D /* BPCircularTapGestureRecognizer.h */,
+				E3AD521A1798C68600E81A9D /* BPCircularTapGestureRecognizer.m */,
 			);
 			path = GestureRecognizers;
 			sourceTree = "<group>";
@@ -319,7 +319,7 @@
 			files = (
 				E3AD5224179A1F9D00E81A9D /* BPScratch.m in Sources */,
 				E358AF561794D85C00DDC769 /* BPAppDelegate.m in Sources */,
-				E3AD521B1798C68600E81A9D /* BPTapGestureRecognizer.m in Sources */,
+				E3AD521B1798C68600E81A9D /* BPCircularTapGestureRecognizer.m in Sources */,
 				E3AD52091796F06C00E81A9D /* BPTappableCircularView.m in Sources */,
 				E3B49E4217962BC1002A779D /* BPVideoFeedProvider.m in Sources */,
 				E358AF521794D85C00DDC769 /* main.m in Sources */,

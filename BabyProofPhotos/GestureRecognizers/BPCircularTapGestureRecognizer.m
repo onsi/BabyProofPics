@@ -1,19 +1,25 @@
 //
-//  BPTapGestureRecognizer.m
+//  BPCircularTapGestureRecognizer.m
 //  BabyProofPhotos
 //
 //  Created by Onsi Fakhouri on 7/18/13.
 //  Copyright (c) 2013 Onsi Fakhouri. All rights reserved.
 //
 
-#import "BPTapGestureRecognizer.h"
+#import "BPCircularTapGestureRecognizer.h"
 #import <UIKit/UIGestureRecognizerSubclass.h>
 
-@implementation BPTapGestureRecognizer
+@implementation BPCircularTapGestureRecognizer
 
 - (BOOL)viewContainsTouch:(UITouch *)touch
 {
-    return [self.view pointInside:[touch locationInView:self.view] withEvent:nil];
+    CGPoint point = [touch locationInView:self.view];
+    
+    CGFloat radius = self.view.bounds.size.width / 2.0;
+    CGFloat dx = point.x - radius;
+    CGFloat dy = point.y - radius;
+    
+    return (dx * dx + dy * dy) <= (radius * radius);
 }
 
 - (NSUInteger)numberOfTouchesInView:(NSSet *)touches

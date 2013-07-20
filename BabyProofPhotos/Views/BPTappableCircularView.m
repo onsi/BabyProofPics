@@ -7,14 +7,14 @@
 //
 
 #import "BPTappableCircularView.h"
-#import "BPTapGestureRecognizer.h"
+#import "BPCircularTapGestureRecognizer.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface BPTappableCircularView ()
 
 @property (nonatomic, weak) id target;
 @property (nonatomic, assign) SEL action;
-@property (nonatomic, strong) BPTapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, strong) BPCircularTapGestureRecognizer *tapGestureRecognizer;
 
 @end
 
@@ -49,26 +49,18 @@
     self.target = target;
     self.action = action;
     if (!self.tapGestureRecognizer) {
-        self.tapGestureRecognizer = [[BPTapGestureRecognizer alloc] initWithTarget:self
-                                                                               action:@selector(handleTapGestureRecognizer:)];
+        self.tapGestureRecognizer = [[BPCircularTapGestureRecognizer alloc] initWithTarget:self
+                                                                                    action:@selector(handleTapGestureRecognizer:)];
         [self addGestureRecognizer:self.tapGestureRecognizer];
     }
 }
 
 - (void)handleTapGestureRecognizer:(UITapGestureRecognizer *)recognizer
 {
-    if (self.target && [self pointWithinCircularBounds:[recognizer locationInView:self]]) {
+    if (self.target && [self.target respondsToSelector:self.action]) {
         [self.target performSelector:self.action
                           withObject:self];
     }
-}
-
-- (BOOL)pointWithinCircularBounds:(CGPoint)point
-{
-    CGFloat radius = self.bounds.size.width / 2.0;
-    CGFloat dx = point.x - radius;
-    CGFloat dy = point.y - radius;
-    return (dx * dx + dy * dy) <= (radius * radius);
 }
 
 @end

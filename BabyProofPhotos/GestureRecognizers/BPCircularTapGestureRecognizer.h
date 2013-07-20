@@ -1,5 +1,5 @@
 //
-//  BPTapGestureRecognizer.h
+//  BPCircularTapGestureRecognizer.h
 //  BabyProofPhotos
 //
 //  Created by Onsi Fakhouri on 7/18/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BPTapGestureRecognizer : UIGestureRecognizer
+@interface BPCircularTapGestureRecognizer : UIGestureRecognizer
 
 @end
