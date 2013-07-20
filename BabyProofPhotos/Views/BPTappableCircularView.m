@@ -7,13 +7,14 @@
 //
 
 #import "BPTappableCircularView.h"
+#import "BPTapGestureRecognizer.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface BPTappableCircularView ()
 
 @property (nonatomic, weak) id target;
 @property (nonatomic, assign) SEL action;
-@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, strong) BPTapGestureRecognizer *tapGestureRecognizer;
 
 @end
 
@@ -48,8 +49,8 @@
     self.target = target;
     self.action = action;
     if (!self.tapGestureRecognizer) {
-        self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                            action:@selector(handleTapGestureRecognizer:)];
+        self.tapGestureRecognizer = [[BPTapGestureRecognizer alloc] initWithTarget:self
+                                                                               action:@selector(handleTapGestureRecognizer:)];
         [self addGestureRecognizer:self.tapGestureRecognizer];
     }
 }
