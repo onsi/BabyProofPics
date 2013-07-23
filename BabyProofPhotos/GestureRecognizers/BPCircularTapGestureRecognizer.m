@@ -29,10 +29,17 @@
     }]] count];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (!self.state == UIGestureRecognizerStateBegan) {
+        self.state = UIGestureRecognizerStateBegan;
+    }
+}
+
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if ([self numberOfTouchesInView:event.allTouches] == 0) {
-        self.state = UIGestureRecognizerStateRecognized;
+        self.state = UIGestureRecognizerStateEnded;
     }
 }
 
@@ -42,7 +49,7 @@
     int numberOfTouchesInView = [self numberOfTouchesInView:event.allTouches];
    
     if (numberOfTouchesEndingInView > 0 && numberOfTouchesEndingInView == numberOfTouchesInView) {
-        self.state = UIGestureRecognizerStateRecognized;
+        self.state = UIGestureRecognizerStateEnded;
     }
 }
 

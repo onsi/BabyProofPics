@@ -48,7 +48,7 @@
     CGFloat height = self.videoFeedContainer.bounds.size.height;
     CGFloat width = height * 4.0 / 3.0;
     self.videoFeedLayer.frame = CGRectMake(0,0,width,height);
-    [self.videoFeedContainer.layer addSublayer:self.videoFeedLayer];
+    [self.videoFeedContainer.contentView.layer addSublayer:self.videoFeedLayer];
 }
 
 - (void)setUpTapHandlers

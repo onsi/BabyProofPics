@@ -10,6 +10,7 @@
 
 @interface BPTappableCircularView : UIView
 
+- (UIView *)contentView;
 - (void)setTapTarget:(id)target action:(SEL)action;
 
 @end
