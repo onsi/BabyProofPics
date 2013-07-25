@@ -1,0 +1,9 @@
+- Transition
+    - Should be able to take the bubble *out* of the simulator (move to add/remove view instead of init with view)
+    - Bubble should be able to animate itself to the middle and expand to fill the screen
+        - Getting the video feed sublayer to scale correctly could involve *subclassing* the bubble view (?)
+    - After the bubble animates we insert the full screen view controller and insert the video feed
+- Transitioning back should work too:
+    - Immediately remove the full scren view and transfer the video feed to the bubble
+    - Bubble should be able to animate itself back to its previous anchor point and size.
+    - On animation completion we throw the bubble back into the simulator.
