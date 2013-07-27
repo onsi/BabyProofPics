@@ -9,3 +9,4 @@
 #import <Foundation/Foundation.h>
 
 CGFloat BPRandom(CGFloat min, CGFloat max);
+CGPoint CGPointAtCenterOfRect(CGRect rect);

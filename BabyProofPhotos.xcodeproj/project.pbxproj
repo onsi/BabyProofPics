@@ -19,6 +19,7 @@
 		E358AF611794D85C00DDC769 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF491794D85C00DDC769 /* UIKit.framework */; };
 		E358AF691794D85C00DDC769 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E358AF671794D85C00DDC769 /* InfoPlist.strings */; };
 		E358AF6B1794D85C00DDC769 /* BabyProofPhotosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E358AF6A1794D85C00DDC769 /* BabyProofPhotosTests.m */; };
+		E359615F17A35603000B0B8C /* BPVideoFeedBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E359615E17A35603000B0B8C /* BPVideoFeedBubbleView.m */; };
 		E3A6B1F517964B7D008AF491 /* BPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A6B1F317964B7D008AF491 /* BPHomeViewController.m */; };
 		E3A6B1F617964B7D008AF491 /* BPHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3A6B1F417964B7D008AF491 /* BPHomeViewController.xib */; };
 		E3AD52091796F06C00E81A9D /* BPTappableCircularView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD52081796F06C00E81A9D /* BPTappableCircularView.m */; };
@@ -58,6 +59,8 @@
 		E358AF661794D85C00DDC769 /* BabyProofPhotosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BabyProofPhotosTests-Info.plist"; sourceTree = "<group>"; };
 		E358AF681794D85C00DDC769 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E358AF6A1794D85C00DDC769 /* BabyProofPhotosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BabyProofPhotosTests.m; sourceTree = "<group>"; };
+		E359615D17A35603000B0B8C /* BPVideoFeedBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPVideoFeedBubbleView.h; sourceTree = "<group>"; };
+		E359615E17A35603000B0B8C /* BPVideoFeedBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPVideoFeedBubbleView.m; sourceTree = "<group>"; };
 		E3A6B1F217964B7D008AF491 /* BPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPHomeViewController.h; sourceTree = "<group>"; };
 		E3A6B1F317964B7D008AF491 /* BPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPHomeViewController.m; sourceTree = "<group>"; };
 		E3A6B1F417964B7D008AF491 /* BPHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BPHomeViewController.xib; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 			children = (
 				E3AD52071796F06C00E81A9D /* BPTappableCircularView.h */,
 				E3AD52081796F06C00E81A9D /* BPTappableCircularView.m */,
+				E359615D17A35603000B0B8C /* BPVideoFeedBubbleView.h */,
+				E359615E17A35603000B0B8C /* BPVideoFeedBubbleView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3AD5224179A1F9D00E81A9D /* BPScratch.m in Sources */,
+				E359615F17A35603000B0B8C /* BPVideoFeedBubbleView.m in Sources */,
 				E3AD5228179AF84C00E81A9D /* BPBreezyBubblesSimulator.m in Sources */,
 				E358AF561794D85C00DDC769 /* BPAppDelegate.m in Sources */,
 				E3AD521B1798C68600E81A9D /* BPCircularTapGestureRecognizer.m in Sources */,

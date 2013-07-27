@@ -12,3 +12,7 @@ CGFloat BPRandom(CGFloat min, CGFloat max) {
     CGFloat unscaled = (CGFloat)arc4random() / UINT_MAX;
     return unscaled * (max - min) + min;
 }
+
+CGPoint CGPointAtCenterOfRect(CGRect rect) {
+    return CGPointMake(rect.origin.x + rect.size.width / 2.0, rect.origin.y + rect.size.height / 2.0);
+}

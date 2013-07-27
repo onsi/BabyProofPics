@@ -7,14 +7,14 @@
 //
 
 #import "BPHomeViewController.h"
+#import "BPVideoFeedBubbleView.h"
 #import "BPVideoFeedProvider.h"
-#import "BPTappableCircularView.h"
 #import "BPFullScreenVideoFeedViewController.h"
 #import "BPBreezyBubblesSimulator.h"
 
 @interface BPHomeViewController ()
 
-@property (nonatomic, weak) IBOutlet BPTappableCircularView *videoFeedContainer;
+@property (nonatomic, weak) IBOutlet BPVideoFeedBubbleView *videoFeedBubble;
 @property (nonatomic, strong) CALayer *videoFeedLayer;
 @property (nonatomic, strong) BPBreezyBubblesSimulator *breezyBubblesSimulator;
 
@@ -27,12 +27,12 @@
     [super viewDidLoad];
     [self setUpTapHandlers];
     [self setUpVideoFeed];
-    [self setUpBreezyBubblesSimulator];    
+    [self setUpBreezyBubblesSimulator];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self installVideoFeed];
+    [self.videoFeedBubble installVideoFeedLayer:self.videoFeedLayer];
 }
 
 #pragma mark - View SetUp
@@ -42,31 +42,22 @@
     self.videoFeedLayer = [[BPVideoFeedProvider provider] videoFeedLayer];
 }
 
-- (void)installVideoFeed
-{
-    [self.videoFeedLayer removeFromSuperlayer];
-    CGFloat height = self.videoFeedContainer.bounds.size.height;
-    CGFloat width = height * 4.0 / 3.0;
-    self.videoFeedLayer.frame = CGRectMake(0,0,width,height);
-    [self.videoFeedContainer.contentView.layer addSublayer:self.videoFeedLayer];
-}
-
 - (void)setUpTapHandlers
 {
-    [self.videoFeedContainer setTapTarget:self action:@selector(didTapVideoFeed:)];
+    [self.videoFeedBubble setTapTarget:self action:@selector(didTapVideoFeedBubble:)];
 }
 
 - (void)setUpBreezyBubblesSimulator
 {
     if (NSClassFromString(@"UIDynamicAnimator")) {
         self.breezyBubblesSimulator = [[BPBreezyBubblesSimulator alloc] initWithReferenceFrame:self.view
-                                                                                         views:@[self.videoFeedContainer]];
+                                                                                         views:@[self.videoFeedBubble]];
     }
 }
 
 #pragma mark - Tap Handlers
 
-- (void)didTapVideoFeed:(BPTappableCircularView *)view
+- (void)didTapVideoFeedBubble:(BPTappableCircularView *)view
 {
     BPFullScreenVideoFeedViewController *fullScreenVideoFeedController = [[BPFullScreenVideoFeedViewController alloc] initWithVideoFeedLayer:self.videoFeedLayer];
     [self.navigationController pushViewController:fullScreenVideoFeedController
