@@ -16,15 +16,6 @@
 
 @implementation BPFullScreenVideoFeedViewController
 
-- (id)initWithVideoFeedLayer:(CALayer *)videoFeedLayer
-{
-    self = [super init];
-    if (self) {
-        self.videoFeedLayer = videoFeedLayer;
-    }
-    return self;
-}
-
 
 - (void)viewDidLoad
 {
@@ -32,16 +23,9 @@
     [self setUpGestureRecognizers];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)installVideoFeedLayer:(CALayer *)layer;
 {
-    [self installVideoFeed];
-}
-
-#pragma mark - View SetUp
-
-- (void)installVideoFeed
-{
-    [self.videoFeedLayer removeFromSuperlayer];
+    self.videoFeedLayer = layer;
     self.videoFeedLayer.frame = self.view.bounds;
     [self.view.layer addSublayer:self.videoFeedLayer];
 }

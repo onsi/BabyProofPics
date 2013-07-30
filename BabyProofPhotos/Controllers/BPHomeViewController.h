@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BPHomeViewController : UIViewController
+@interface BPHomeViewController : UIViewController <UINavigationControllerDelegate>
 
 @end

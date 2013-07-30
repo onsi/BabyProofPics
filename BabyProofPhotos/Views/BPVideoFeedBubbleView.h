@@ -12,9 +12,10 @@
 
 #pragma mark - Adding and removing the video feed
 - (void)installVideoFeedLayer:(CALayer *)videoFeedLayer;
-- (void)removeVideoFeedLayer;
+- (CALayer *)removeVideoFeedLayer;
 
 #pragma mark - Animations
 - (void)expandToFillSuperviewWithDuration:(NSTimeInterval)duration;
+- (void)contractWithDuration:(NSTimeInterval)duration;
 
 @end

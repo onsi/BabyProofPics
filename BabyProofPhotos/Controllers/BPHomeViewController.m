@@ -11,6 +11,7 @@
 #import "BPVideoFeedProvider.h"
 #import "BPFullScreenVideoFeedViewController.h"
 #import "BPBreezyBubblesSimulator.h"
+#import "BPExpandVideoFeedAnimatedTransitioning.h"
 
 @interface BPHomeViewController ()
 
@@ -25,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.delegate = self;
     [self setUpTapHandlers];
     [self setUpVideoFeed];
     [self setUpBreezyBubblesSimulator];
@@ -59,9 +61,20 @@
 
 - (void)didTapVideoFeedBubble:(BPTappableCircularView *)view
 {
-    BPFullScreenVideoFeedViewController *fullScreenVideoFeedController = [[BPFullScreenVideoFeedViewController alloc] initWithVideoFeedLayer:self.videoFeedLayer];
+    BPFullScreenVideoFeedViewController *fullScreenVideoFeedController = [BPFullScreenVideoFeedViewController new];
     [self.navigationController pushViewController:fullScreenVideoFeedController
                                          animated:YES];
+}
+
+- (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                  toViewController:(UIViewController *)toVC
+{
+    if (operation == UINavigationControllerOperationPush && [toVC isKindOfClass:[BPFullScreenVideoFeedViewController class]]) {
+        return [[BPExpandVideoFeedAnimatedTransitioning alloc] initWithVideoFeedBubble:self.videoFeedBubble];
+    }
+    return nil;
 }
 
 @end
