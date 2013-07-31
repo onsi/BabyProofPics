@@ -10,6 +10,7 @@
 #import "BPVideoFeedBubbleView.h"
 #import "BPFullScreenVideoFeedViewController.h"
 #import "BPBreezyBubblesSimulator.h"
+#import "BPMath.h"
 
 @interface BPExpandVideoFeedAnimatedTransitioning ()
 
@@ -44,6 +45,10 @@
 {
     UIView *containerView = transitionContext.containerView;
     BPFullScreenVideoFeedViewController *fullScreenController = (BPFullScreenVideoFeedViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    
+    [self.breezyBubblesSimulator pushBreezyItem:self.videoFeedBubble
+                                      withForce:CGSizeMake(0,300)
+                                 andSnapToPoint:CGPointAtCenterOfRect(containerView.bounds)];
     
     [UIView animateWithDuration:self.transitionDuration
                      animations:^{
