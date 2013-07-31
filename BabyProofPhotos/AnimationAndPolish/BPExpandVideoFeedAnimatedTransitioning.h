@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class BPVideoFeedBubbleView;
+@class BPVideoFeedBubbleView, BPBreezyBubblesSimulator;
 
 @interface BPExpandVideoFeedAnimatedTransitioning : NSObject <UIViewControllerAnimatedTransitioning>
 
-- (instancetype)initWithVideoFeedBubble:(BPVideoFeedBubbleView *)videoFeedBubble;
+- (instancetype)initWithVideoFeedBubble:(BPVideoFeedBubbleView *)videoFeedBubble
+                              simulator:(BPBreezyBubblesSimulator *)breezyBubblesSimulator;
 
 @end

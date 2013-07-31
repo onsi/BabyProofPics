@@ -10,6 +10,7 @@
 
 @interface BPBreezyBubblesSimulator : NSObject
 
-- (id)initWithReferenceFrame:(UIView *)referenceFrame views:(NSArray *)views;
+- (id)initWithReferenceFrame:(UIView *)referenceFrame;
+- (void)addBreezyItem:(id<UIDynamicItem>)item centeredAt:(CGPoint)center;
 
 @end

@@ -9,10 +9,12 @@
 #import "BPExpandVideoFeedAnimatedTransitioning.h"
 #import "BPVideoFeedBubbleView.h"
 #import "BPFullScreenVideoFeedViewController.h"
+#import "BPBreezyBubblesSimulator.h"
 
 @interface BPExpandVideoFeedAnimatedTransitioning ()
 
 @property (nonatomic, strong) BPVideoFeedBubbleView *videoFeedBubble;
+@property (nonatomic, strong) BPBreezyBubblesSimulator *breezyBubblesSimulator;
 @property (nonatomic, assign) NSTimeInterval transitionDuration;
 
 @end
@@ -20,11 +22,13 @@
 @implementation BPExpandVideoFeedAnimatedTransitioning
 
 - (instancetype)initWithVideoFeedBubble:(BPVideoFeedBubbleView *)videoFeedBubble
+                              simulator:(BPBreezyBubblesSimulator *)breezyBubblesSimulator
 {
     self = [super init];
     
     if (self) {
         self.videoFeedBubble = videoFeedBubble;
+        self.breezyBubblesSimulator = breezyBubblesSimulator;
         self.transitionDuration = 1.0;
     }
     

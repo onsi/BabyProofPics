@@ -1,5 +1,5 @@
 - Transition
-    - Add transition delegate
+    X Add transition delegate
     - Simulator should snap bubble to the middle (*currently the snap behavior is misbehaving... perhaps it will be fixed in an update?, alternatively use CAAnimation's valueFunction to interpolat between the simulator and the goal).
     - Once snapped the bubble should be removed from the simulator
     X Bubble should be able to expand itself to fill the screen (just the bounds + corner radius, not the center)

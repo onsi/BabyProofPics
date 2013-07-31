@@ -12,55 +12,63 @@
 @interface BPBreezyBubblesSimulator ()
 
 @property (nonatomic, strong) UIDynamicAnimator *animator;
+@property (nonatomic, strong) UIDynamicItemBehavior *elasticityBehavior;
+@property (nonatomic, strong) UICollisionBehavior *collisionBehavior;
 @property (nonatomic, strong) UIPushBehavior *windBehavior;
+
+@property (nonatomic, strong) NSMapTable *attachmentBehaviors;
 
 @end
 
 @implementation BPBreezyBubblesSimulator
 
-- (id)initWithReferenceFrame:(UIView *)referenceFrame views:(NSArray *)views
+- (id)initWithReferenceFrame:(UIView *)referenceFrame
 {
     self = [super init];
     if (self) {
         self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:referenceFrame];
-        [self setUpBubbleElasticity:views];
-        [self setUpCollisions:views];
-        [self setUpAttachments:views];
-        [self startWind:views];
+        self.attachmentBehaviors = [NSMapTable weakToStrongObjectsMapTable];
+        [self setUpBubbleElasticityBehavior];
+        [self setUpCollisionsBehavior];
+        [self setUpWindBehavior];
         [self blow];
     }
     return self;
 }
 
-- (void)setUpBubbleElasticity:(NSArray *)views
+- (void)addBreezyItem:(id<UIDynamicItem>)item centeredAt:(CGPoint)center
 {
-    UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:views];
-    itemBehavior.elasticity = 0.7;
-    [self.animator addBehavior:itemBehavior];
+    [self.elasticityBehavior addItem:item];
+    [self.collisionBehavior addItem:item];
+    [self.windBehavior addItem:item];
+    
+    UIAttachmentBehavior *attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:item
+                                                                         attachedToAnchor:center];
+    attachmentBehavior.damping = 0.7;
+    attachmentBehavior.frequency = 0.2;
+    [self.animator addBehavior:attachmentBehavior];
+    [self.attachmentBehaviors setObject:attachmentBehavior forKey:item];
 }
 
-- (void)setUpCollisions:(NSArray *)views
+- (void)setUpBubbleElasticityBehavior
 {
-    UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc] initWithItems:views];
-    collisionBehavior.collisionMode = UICollisionBehaviorModeBoundaries;
-    collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
-    [collisionBehavior setTranslatesReferenceBoundsIntoBoundaryWithInsets:UIEdgeInsetsMake(-100, -100, -100, -100)];
-    [self.animator addBehavior:collisionBehavior];
+    self.elasticityBehavior = [[UIDynamicItemBehavior alloc] initWithItems:nil];
+    self.elasticityBehavior.elasticity = 0.7;
+    [self.animator addBehavior:self.elasticityBehavior];
 }
 
-- (void)setUpAttachments:(NSArray *)views
+- (void)setUpCollisionsBehavior
 {
-    for (UIView *view in views) {
-        UIAttachmentBehavior *attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:view attachedToAnchor:view.center];
-        attachmentBehavior.damping = 0.7;
-        attachmentBehavior.frequency = 0.2;
-        [self.animator addBehavior:attachmentBehavior];
-    }
+    self.collisionBehavior = [[UICollisionBehavior alloc] initWithItems:nil];
+    self.collisionBehavior.collisionMode = UICollisionBehaviorModeBoundaries;
+    self.collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+    [self.collisionBehavior setTranslatesReferenceBoundsIntoBoundaryWithInsets:UIEdgeInsetsMake(-100, -100, -100, -100)];
+    [self.animator addBehavior:self.collisionBehavior];
 }
 
-- (void)startWind:(NSArray *)views
+- (void)setUpWindBehavior
 {
-    self.windBehavior = [[UIPushBehavior alloc] initWithItems:views mode:UIPushBehaviorModeContinuous];
+    self.windBehavior = [[UIPushBehavior alloc] initWithItems:nil mode:UIPushBehaviorModeContinuous];
     [self.animator addBehavior:self.windBehavior];
 }
 

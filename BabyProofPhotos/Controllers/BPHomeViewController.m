@@ -52,8 +52,9 @@
 - (void)setUpBreezyBubblesSimulator
 {
     if (NSClassFromString(@"UIDynamicAnimator")) {
-        self.breezyBubblesSimulator = [[BPBreezyBubblesSimulator alloc] initWithReferenceFrame:self.view
-                                                                                         views:@[self.videoFeedBubble]];
+        self.breezyBubblesSimulator = [[BPBreezyBubblesSimulator alloc] initWithReferenceFrame:self.view];
+        [self.breezyBubblesSimulator addBreezyItem:self.videoFeedBubble
+                                        centeredAt:self.videoFeedBubble.center];
     }
 }
 
@@ -72,7 +73,8 @@
                                                   toViewController:(UIViewController *)toVC
 {
     if (operation == UINavigationControllerOperationPush && [toVC isKindOfClass:[BPFullScreenVideoFeedViewController class]]) {
-        return [[BPExpandVideoFeedAnimatedTransitioning alloc] initWithVideoFeedBubble:self.videoFeedBubble];
+        return [[BPExpandVideoFeedAnimatedTransitioning alloc] initWithVideoFeedBubble:self.videoFeedBubble
+                                                                             simulator:self.breezyBubblesSimulator];
     }
     return nil;
 }
