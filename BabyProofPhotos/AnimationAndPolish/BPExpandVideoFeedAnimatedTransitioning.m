@@ -46,9 +46,7 @@
     UIView *containerView = transitionContext.containerView;
     BPFullScreenVideoFeedViewController *fullScreenController = (BPFullScreenVideoFeedViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
-    [self.breezyBubblesSimulator pushBreezyItem:self.videoFeedBubble
-                                      withForce:CGSizeMake(0,300)
-                                 andSnapToPoint:CGPointAtCenterOfRect(containerView.bounds)];
+    [self.breezyBubblesSimulator removeBreezyItem:self.videoFeedBubble];
     
     [UIView animateWithDuration:self.transitionDuration
                      animations:^{

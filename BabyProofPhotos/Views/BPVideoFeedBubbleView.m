@@ -47,6 +47,7 @@
 - (void)expandToFillSuperviewWithDuration:(NSTimeInterval)duration
 {
     self.contractedBounds = self.bounds;
+    [self moveToCenterWithDuration:duration];
     [self expandToFillSuperviewAndStraighenCornersWithDuration:duration];
     [self centerAndExpandVideoFeedLayerWithDuration:duration];
 }
@@ -62,6 +63,32 @@
 - (CGRect)expandedBounds
 {
     return self.superview.bounds;
+}
+
+- (CGPathRef)spiralToCenterPath
+{
+    CGPoint start = self.layer.position;
+    CGPoint end = CGPointAtCenterOfRect(self.expandedBounds);
+    
+    CGPoint middle = CGPointMake((start.x + end.x) / 2.0, self.expandedBounds.size.height * 0.7);
+    
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, start.x, start.y);
+    CGPathAddCurveToPoint(path, NULL, start.x, middle.y, start.x, middle.y, middle.x, middle.y);
+    CGPathAddCurveToPoint(path, NULL, end.x, middle.y, end.x, middle.y, end.x, end.y);
+    
+    return path;
+}
+
+- (void)moveToCenterWithDuration:(NSTimeInterval)duration
+{
+    CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    pathAnimation.path = self.spiralToCenterPath;
+    pathAnimation.calculationMode = @"cubicPaced";
+    pathAnimation.duration = duration;
+    
+    self.layer.position = CGPathGetCurrentPoint(pathAnimation.path);
+    [self.layer addAnimation:pathAnimation forKey:@"snapToCenter"];
 }
 
 - (void)expandToFillSuperviewAndStraighenCornersWithDuration:(NSTimeInterval)duration

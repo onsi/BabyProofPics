@@ -13,6 +13,6 @@
 - (id)initWithReferenceFrame:(UIView *)referenceFrame;
 
 - (void)addBreezyItem:(id<UIDynamicItem>)item centeredAt:(CGPoint)center;
-- (void)pushBreezyItem:(id<UIDynamicItem>)item withForce:(CGSize)force andSnapToPoint:(CGPoint)point;
+- (void)removeBreezyItem:(id<UIDynamicItem>)item;
 
 @end
