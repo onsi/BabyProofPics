@@ -30,7 +30,7 @@
     if (self) {
         self.videoFeedBubble = videoFeedBubble;
         self.breezyBubblesSimulator = breezyBubblesSimulator;
-        self.transitionDuration = 1.0;
+        self.transitionDuration = 2.0;
     }
     
     return self;

@@ -69,13 +69,21 @@
 {
     CGPoint start = self.layer.position;
     CGPoint end = CGPointAtCenterOfRect(self.expandedBounds);
+
+    CGFloat bottomOfSpiral = end.y + self.expandedBounds.size.height * 0.3;
+    CGFloat edgeOfSpiral = end.x - 0.3 * (start.x - end.x);
+    CGFloat topOfSpiral = end.y - self.expandedBounds.size.height * 0.15;
     
-    CGPoint middle = CGPointMake((start.x + end.x) / 2.0, self.expandedBounds.size.height * 0.7);
+    CGPoint first_inflection = CGPointMake((start.x + edgeOfSpiral) / 2.0, bottomOfSpiral);
+    CGPoint second_inflection = CGPointMake(edgeOfSpiral, end.y);
+    CGPoint third_inflection = CGPointMake((end.x + edgeOfSpiral) / 2.0, topOfSpiral);
     
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, start.x, start.y);
-    CGPathAddCurveToPoint(path, NULL, start.x, middle.y, start.x, middle.y, middle.x, middle.y);
-    CGPathAddCurveToPoint(path, NULL, end.x, middle.y, end.x, middle.y, end.x, end.y);
+    CGPathAddQuadCurveToPoint(path, NULL, start.x, first_inflection.y, first_inflection.x, first_inflection.y);
+    CGPathAddQuadCurveToPoint(path, NULL, second_inflection.x, first_inflection.y, second_inflection.x, second_inflection.y);
+    CGPathAddQuadCurveToPoint(path, NULL, second_inflection.x, third_inflection.y, third_inflection.x, third_inflection.y);
+    CGPathAddQuadCurveToPoint(path, NULL, end.x, second_inflection.y, end.x, end.y);
     
     return path;
 }
@@ -84,7 +92,7 @@
 {
     CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     pathAnimation.path = self.spiralToCenterPath;
-    pathAnimation.calculationMode = @"cubicPaced";
+    pathAnimation.calculationMode = @"paced";
     pathAnimation.duration = duration;
     
     self.layer.position = CGPathGetCurrentPoint(pathAnimation.path);

@@ -4,7 +4,7 @@
     X Bubble should be able to expand itself to fill the screen (just the bounds + corner radius, not the center)
         X Getting the video feed sublayer to scale correctly could involve *subclassing* the bubble view (?)
     X After the bubble animates we insert the full screen view controller and insert the video feed
-    - Build a custom snap behavior that isn't quite so fast?
+    X Perfrom a spiral animation in CoreAnimation, not UIDynamics.
 - Transitioning back should work too:
     - Immediately remove the full scren view and transfer the video feed to the bubble
     - Bubble should be able to animate itself back to its previous anchor point and size.
