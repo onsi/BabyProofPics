@@ -11,5 +11,6 @@
 @interface BPFullScreenVideoFeedViewController : UIViewController
 
 - (void)installVideoFeedLayer:(CALayer *)layer;
+- (CALayer *)removeVideoFeedLayer;
 
 @end

@@ -26,8 +26,16 @@
 - (void)installVideoFeedLayer:(CALayer *)layer;
 {
     self.videoFeedLayer = layer;
-    self.videoFeedLayer.frame = self.view.bounds;
+    self.videoFeedLayer.bounds = self.view.bounds;
     [self.view.layer addSublayer:self.videoFeedLayer];
+}
+
+- (CALayer *)removeVideoFeedLayer
+{
+    CALayer *layer = self.videoFeedLayer;
+    [self.videoFeedLayer removeFromSuperlayer];
+    self.videoFeedLayer = nil;
+    return layer;
 }
 
 - (void)setUpGestureRecognizers

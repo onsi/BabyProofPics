@@ -10,7 +10,6 @@
 #import "BPVideoFeedBubbleView.h"
 #import "BPFullScreenVideoFeedViewController.h"
 #import "BPBreezyBubblesSimulator.h"
-#import "BPMath.h"
 
 @interface BPExpandVideoFeedAnimatedTransitioning ()
 
@@ -47,19 +46,16 @@
     BPFullScreenVideoFeedViewController *fullScreenController = (BPFullScreenVideoFeedViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
     [self.breezyBubblesSimulator removeBreezyItem:self.videoFeedBubble];
-    
-    [UIView animateWithDuration:self.transitionDuration
-                     animations:^{
-                         [self.videoFeedBubble expandToFillSuperviewWithDuration:self.transitionDuration];
-                     } completion:^(BOOL finished) {
-                         fullScreenController.view.frame = [transitionContext finalFrameForViewController:fullScreenController];
-                         [containerView addSubview:fullScreenController.view];
-                         
-                         CALayer *videoFeedLayer = [self.videoFeedBubble removeVideoFeedLayer];
-                         [fullScreenController installVideoFeedLayer:videoFeedLayer];
-                         
-                         [transitionContext completeTransition:YES];
-                     }];
+    [self.videoFeedBubble expandToFillSuperviewWithDuration:self.transitionDuration
+                                                 completion:^{
+                                                     fullScreenController.view.frame = [transitionContext finalFrameForViewController:fullScreenController];
+                                                     [containerView addSubview:fullScreenController.view];
+                                                     
+                                                     CALayer *videoFeedLayer = [self.videoFeedBubble removeVideoFeedLayer];
+                                                     [fullScreenController installVideoFeedLayer:videoFeedLayer];
+                                                     
+                                                     [transitionContext completeTransition:YES];
+                                                 }];
 }
 
 @end

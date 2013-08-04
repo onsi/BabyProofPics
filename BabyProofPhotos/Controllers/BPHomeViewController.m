@@ -11,7 +11,9 @@
 #import "BPVideoFeedProvider.h"
 #import "BPFullScreenVideoFeedViewController.h"
 #import "BPBreezyBubblesSimulator.h"
+
 #import "BPExpandVideoFeedAnimatedTransitioning.h"
+#import "BPContractVideoFeedAnimatedTransitioning.h"
 
 @interface BPHomeViewController ()
 
@@ -19,21 +21,23 @@
 @property (nonatomic, strong) CALayer *videoFeedLayer;
 @property (nonatomic, strong) BPBreezyBubblesSimulator *breezyBubblesSimulator;
 
+@property (nonatomic, assign) CGSize videoFeedBubbleSize;
+@property (nonatomic, assign) CGPoint videoFeedBubbleCenter;
+
 @end
 
 @implementation BPHomeViewController
 
 - (void)viewDidLoad
 {
+    self.videoFeedBubbleSize = self.videoFeedBubble.bounds.size;
+    self.videoFeedBubbleCenter = self.videoFeedBubble.center;
+    
     [super viewDidLoad];
     self.navigationController.delegate = self;
     [self setUpTapHandlers];
     [self setUpVideoFeed];
     [self setUpBreezyBubblesSimulator];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
     [self.videoFeedBubble installVideoFeedLayer:self.videoFeedLayer];
 }
 
@@ -75,6 +79,11 @@
     if (operation == UINavigationControllerOperationPush && [toVC isKindOfClass:[BPFullScreenVideoFeedViewController class]]) {
         return [[BPExpandVideoFeedAnimatedTransitioning alloc] initWithVideoFeedBubble:self.videoFeedBubble
                                                                              simulator:self.breezyBubblesSimulator];
+    } else if (operation == UINavigationControllerOperationPop && [fromVC isKindOfClass:[BPFullScreenVideoFeedViewController class]]) {
+        return [[BPContractVideoFeedAnimatedTransitioning alloc] initWithVideoFeedBubble:self.videoFeedBubble
+                                                                               simulator:self.breezyBubblesSimulator
+                                                                          contractedSize:self.videoFeedBubbleSize
+                                                                        contractedCenter:self.videoFeedBubbleCenter];
     }
     return nil;
 }

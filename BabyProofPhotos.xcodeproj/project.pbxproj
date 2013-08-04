@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3345CE817AD756C00604469 /* BPAnimationSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E3345CE717AD756C00604469 /* BPAnimationSupport.m */; };
 		E358AF461794D85C00DDC769 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF451794D85C00DDC769 /* Foundation.framework */; };
 		E358AF481794D85C00DDC769 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF471794D85C00DDC769 /* CoreGraphics.framework */; };
 		E358AF4A1794D85C00DDC769 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF491794D85C00DDC769 /* UIKit.framework */; };
@@ -31,6 +32,7 @@
 		E3AD5228179AF84C00E81A9D /* BPBreezyBubblesSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD5227179AF84C00E81A9D /* BPBreezyBubblesSimulator.m */; };
 		E3AD522B179B388C00E81A9D /* BPMath.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD522A179B388C00E81A9D /* BPMath.m */; };
 		E3B49E4217962BC1002A779D /* BPVideoFeedProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B49E4117962BC1002A779D /* BPVideoFeedProvider.m */; };
+		E3DD069B17AB43A1007EC557 /* BPContractVideoFeedAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DD069A17AB43A1007EC557 /* BPContractVideoFeedAnimatedTransitioning.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E3345CE617AD756C00604469 /* BPAnimationSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAnimationSupport.h; sourceTree = "<group>"; };
+		E3345CE717AD756C00604469 /* BPAnimationSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAnimationSupport.m; sourceTree = "<group>"; };
 		E358AF421794D85C00DDC769 /* BabyProofPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyProofPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E358AF451794D85C00DDC769 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E358AF471794D85C00DDC769 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,6 +86,8 @@
 		E3AD522A179B388C00E81A9D /* BPMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPMath.m; sourceTree = "<group>"; };
 		E3B49E4017962BC1002A779D /* BPVideoFeedProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPVideoFeedProvider.h; sourceTree = "<group>"; };
 		E3B49E4117962BC1002A779D /* BPVideoFeedProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPVideoFeedProvider.m; sourceTree = "<group>"; };
+		E3DD069917AB43A1007EC557 /* BPContractVideoFeedAnimatedTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPContractVideoFeedAnimatedTransitioning.h; sourceTree = "<group>"; };
+		E3DD069A17AB43A1007EC557 /* BPContractVideoFeedAnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPContractVideoFeedAnimatedTransitioning.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,10 +225,11 @@
 		E3AD5225179AF83600E81A9D /* AnimationAndPolish */ = {
 			isa = PBXGroup;
 			children = (
+				E3DD069C17AC0603007EC557 /* Transitions */,
 				E3AD5226179AF84C00E81A9D /* BPBreezyBubblesSimulator.h */,
 				E3AD5227179AF84C00E81A9D /* BPBreezyBubblesSimulator.m */,
-				E359616017A74ACA000B0B8C /* BPExpandVideoFeedAnimatedTransitioning.h */,
-				E359616117A74ACA000B0B8C /* BPExpandVideoFeedAnimatedTransitioning.m */,
+				E3345CE617AD756C00604469 /* BPAnimationSupport.h */,
+				E3345CE717AD756C00604469 /* BPAnimationSupport.m */,
 			);
 			path = AnimationAndPolish;
 			sourceTree = "<group>";
@@ -238,6 +245,17 @@
 				E3AD522A179B388C00E81A9D /* BPMath.m */,
 			);
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		E3DD069C17AC0603007EC557 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				E359616017A74ACA000B0B8C /* BPExpandVideoFeedAnimatedTransitioning.h */,
+				E359616117A74ACA000B0B8C /* BPExpandVideoFeedAnimatedTransitioning.m */,
+				E3DD069917AB43A1007EC557 /* BPContractVideoFeedAnimatedTransitioning.h */,
+				E3DD069A17AB43A1007EC557 /* BPContractVideoFeedAnimatedTransitioning.m */,
+			);
+			path = Transitions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,8 +366,10 @@
 				E3AD5224179A1F9D00E81A9D /* BPScratch.m in Sources */,
 				E359615F17A35603000B0B8C /* BPVideoFeedBubbleView.m in Sources */,
 				E3AD5228179AF84C00E81A9D /* BPBreezyBubblesSimulator.m in Sources */,
+				E3DD069B17AB43A1007EC557 /* BPContractVideoFeedAnimatedTransitioning.m in Sources */,
 				E358AF561794D85C00DDC769 /* BPAppDelegate.m in Sources */,
 				E3AD521B1798C68600E81A9D /* BPCircularTapGestureRecognizer.m in Sources */,
+				E3345CE817AD756C00604469 /* BPAnimationSupport.m in Sources */,
 				E3AD52091796F06C00E81A9D /* BPTappableCircularView.m in Sources */,
 				E3B49E4217962BC1002A779D /* BPVideoFeedProvider.m in Sources */,
 				E358AF521794D85C00DDC769 /* main.m in Sources */,
@@ -476,7 +496,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BabyProofPhotos/BabyProofPhotos-Prefix.pch";
 				INFOPLIST_FILE = "BabyProofPhotos/BabyProofPhotos-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -490,7 +510,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BabyProofPhotos/BabyProofPhotos-Prefix.pch";
 				INFOPLIST_FILE = "BabyProofPhotos/BabyProofPhotos-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

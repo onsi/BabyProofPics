@@ -1,11 +1,7 @@
-- Transition
-    X Add transition delegate
-    X Simulator should snap bubble to the middle (*currently the snap behavior is misbehaving... perhaps it will be fixed in an update?, alternatively use CAAnimation's valueFunction to interpolat between the simulator and the goal).
-    X Bubble should be able to expand itself to fill the screen (just the bounds + corner radius, not the center)
-        X Getting the video feed sublayer to scale correctly could involve *subclassing* the bubble view (?)
-    X After the bubble animates we insert the full screen view controller and insert the video feed
-    X Perfrom a spiral animation in CoreAnimation, not UIDynamics.
-- Transitioning back should work too:
-    - Immediately remove the full scren view and transfer the video feed to the bubble
-    - Bubble should be able to animate itself back to its previous anchor point and size.
-    - On animation completion we throw the bubble back into the simulator.  
+- Figure out why the video feed layer immediately changes size.  bug?
+- Don't do the spiral thing, just move in to the left.
+    - Maybe with a path?  Maybe with springs?
+- Add the tap-and-hold gesture recognizer
+- Add the animated progress ring
+- Fade in the navigation bar and allow the user to press "back"
+    - pushes to the right (path? springs?)

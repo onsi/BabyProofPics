@@ -16,3 +16,7 @@ CGFloat BPRandom(CGFloat min, CGFloat max) {
 CGPoint CGPointAtCenterOfRect(CGRect rect) {
     return CGPointMake(rect.origin.x + rect.size.width / 2.0, rect.origin.y + rect.size.height / 2.0);
 }
+
+CGRect CGRectMakeWithOriginAndSize(CGPoint origin, CGSize size) {
+    return CGRectMake(origin.x, origin.y, size.width, size.height);
+}

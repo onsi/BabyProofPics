@@ -8,11 +8,11 @@
 
 #import "BPVideoFeedBubbleView.h"
 #import "BPMath.h"
+#import "BPAnimationSupport.h"
 
 @interface BPVideoFeedBubbleView ()
 
 @property (nonatomic, strong) CALayer *videoFeedLayer;
-@property (nonatomic, assign) CGRect contractedBounds;
 
 @end
 
@@ -28,8 +28,9 @@
     self.videoFeedLayer.anchorPoint = CGPointMake(0,0);
     self.videoFeedLayer.position = CGPointMake(0, 0);
 
-    CGFloat height = self.bounds.size.height;
+    CGFloat height = self.contentView.bounds.size.height;
     CGFloat width = height * 4.0 / 3.0;
+    
     self.videoFeedLayer.bounds = CGRectMake(0,0,width,height);
     [self.contentView.layer addSublayer:self.videoFeedLayer];
 }
@@ -44,18 +45,25 @@
 
 #pragma mark - Animation
 
-- (void)expandToFillSuperviewWithDuration:(NSTimeInterval)duration
+- (void)expandToFillSuperviewWithDuration:(NSTimeInterval)duration completion:(BPAnimationCompletion)completion
 {
-    self.contractedBounds = self.bounds;
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:completion];
     [self moveToCenterWithDuration:duration];
     [self expandToFillSuperviewAndStraighenCornersWithDuration:duration];
-    [self centerAndExpandVideoFeedLayerWithDuration:duration];
+    [self expandVideoFeedLayerWithDuration:duration];
+    [CATransaction commit];
 }
 
-- (void)contractWithDuration:(NSTimeInterval)duration
+- (void)contractToSize:(CGSize)size center:(CGPoint)center withDuration:(NSTimeInterval)duration completion:(BPAnimationCompletion)completion
 {
-    [self contractAndCircularizeWithDuration:duration];
-    [self contractVideoFeedLayerWithDuration:duration];
+    //PASS ME A COMPLETION BLOCK!
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:completion];
+    [self moveToPosition:center withDuration:duration];
+    [self contractToSize:size andCircularizeWithDuration:duration];
+    [self contractVideoFeedLayerToSize:size withDuration:duration];
+    [CATransaction commit];
 }
 
 #pragma mark - Expansion
@@ -65,98 +73,110 @@
     return self.superview.bounds;
 }
 
-- (CGPathRef)spiralToCenterPath
+- (UIBezierPath *)spiralFromOuterPoint:(CGPoint)outerPoint toCenterPoint:(CGPoint)centerPoint
 {
-    CGPoint start = self.layer.position;
-    CGPoint end = CGPointAtCenterOfRect(self.expandedBounds);
-
-    CGFloat bottomOfSpiral = end.y + self.expandedBounds.size.height * 0.3;
-    CGFloat edgeOfSpiral = end.x - 0.3 * (start.x - end.x);
-    CGFloat topOfSpiral = end.y - self.expandedBounds.size.height * 0.15;
+    CGFloat bottomOfSpiral = centerPoint.y + self.expandedBounds.size.height * 0.3;
+    CGFloat edgeOfSpiral = centerPoint.x - 0.3 * (outerPoint.x - centerPoint.x);
+    CGFloat topOfSpiral = centerPoint.y - self.expandedBounds.size.height * 0.15;
     
-    CGPoint first_inflection = CGPointMake((start.x + edgeOfSpiral) / 2.0, bottomOfSpiral);
-    CGPoint second_inflection = CGPointMake(edgeOfSpiral, end.y);
-    CGPoint third_inflection = CGPointMake((end.x + edgeOfSpiral) / 2.0, topOfSpiral);
+    CGPoint firstInflection = CGPointMake((outerPoint.x + edgeOfSpiral) / 2.0, bottomOfSpiral);
+    CGPoint secondInflection = CGPointMake(edgeOfSpiral, centerPoint.y);
+    CGPoint thirdInflection = CGPointMake((centerPoint.x + edgeOfSpiral) / 2.0, topOfSpiral);
     
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, start.x, start.y);
-    CGPathAddQuadCurveToPoint(path, NULL, start.x, first_inflection.y, first_inflection.x, first_inflection.y);
-    CGPathAddQuadCurveToPoint(path, NULL, second_inflection.x, first_inflection.y, second_inflection.x, second_inflection.y);
-    CGPathAddQuadCurveToPoint(path, NULL, second_inflection.x, third_inflection.y, third_inflection.x, third_inflection.y);
-    CGPathAddQuadCurveToPoint(path, NULL, end.x, second_inflection.y, end.x, end.y);
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:outerPoint];
+    [path addQuadCurveToPoint:firstInflection
+                 controlPoint:CGPointMake(outerPoint.x, firstInflection.y)];
+    [path addQuadCurveToPoint:secondInflection
+                 controlPoint:CGPointMake(secondInflection.x, firstInflection.y)];
+    [path addQuadCurveToPoint:thirdInflection
+                 controlPoint:CGPointMake(secondInflection.x, thirdInflection.y)];
+    [path addQuadCurveToPoint:centerPoint
+                 controlPoint:CGPointMake(centerPoint.x, secondInflection.y)];
     
     return path;
 }
 
+- (UIBezierPath *)spiralFromCenterPoint:(CGPoint)centerPoint toOuterPoint:(CGPoint)outerPoint
+{
+    return [[self spiralFromOuterPoint:outerPoint toCenterPoint:centerPoint] bezierPathByReversingPath];
+}
+
 - (void)moveToCenterWithDuration:(NSTimeInterval)duration
 {
-    CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    pathAnimation.path = self.spiralToCenterPath;
-    pathAnimation.calculationMode = @"paced";
-    pathAnimation.duration = duration;
+    UIBezierPath *path = [self spiralFromOuterPoint:self.layer.position
+                                      toCenterPoint:CGPointAtCenterOfRect(self.expandedBounds)];
     
-    self.layer.position = CGPathGetCurrentPoint(pathAnimation.path);
-    [self.layer addAnimation:pathAnimation forKey:@"snapToCenter"];
+    CAKeyframeAnimation *pathAnimation = [BPAnimationSupport positionAlongPath:path
+                                                                  withDuration:duration];
+
+    self.layer.position = CGPointAtCenterOfRect(self.expandedBounds);
+    [self.layer addAnimation:pathAnimation forKey:@"spiralToCenter"];
 }
 
 - (void)expandToFillSuperviewAndStraighenCornersWithDuration:(NSTimeInterval)duration
 {
-    CABasicAnimation *cornerRadius = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
-    cornerRadius.toValue = 0;
-    
-    CABasicAnimation *bounds = [CABasicAnimation animationWithKeyPath:@"bounds"];
-    bounds.toValue = [NSValue valueWithCGRect:self.expandedBounds];
-    
-    CAAnimationGroup *group = [CAAnimationGroup animation];
-    group.animations = @[bounds, cornerRadius];
-    group.duration = duration;
+    CABasicAnimation *cornerRadiusAnimation = [BPAnimationSupport cornerRadiusFrom:self.contentView.layer.cornerRadius to:0 withDuration:duration];
 
-    [self.contentView.layer addAnimation:group forKey:@"expandToFill"];
+    CABasicAnimation *boundsAnimation = [BPAnimationSupport boundsFrom:self.contentView.layer.bounds to:self.expandedBounds withDuration:duration];
+    
+    CAAnimationGroup *animationGroup = [BPAnimationSupport groupAnimations:@[cornerRadiusAnimation, boundsAnimation]
+                                                              withDuration:duration];
+
     self.contentView.layer.cornerRadius = 0;
     self.contentView.layer.bounds = self.expandedBounds;
+    [self.contentView.layer addAnimation:animationGroup forKey:@"expandToFill"];
 }
 
-- (void)centerAndExpandVideoFeedLayerWithDuration:(NSTimeInterval)duration
-{
-    CABasicAnimation *bounds = [CABasicAnimation animationWithKeyPath:@"bounds"];
-    bounds.toValue = [NSValue valueWithCGRect:self.expandedBounds];
-    bounds.duration = duration;
 
-    [self.videoFeedLayer addAnimation:bounds forKey:@"expandToFill"];
+- (void)expandVideoFeedLayerWithDuration:(NSTimeInterval)duration
+{
+    CABasicAnimation *boundsAnimation = [BPAnimationSupport boundsFrom:self.videoFeedLayer.bounds to:self.expandedBounds withDuration:duration];
+
     self.videoFeedLayer.bounds = self.expandedBounds;
+    [self.videoFeedLayer addAnimation:boundsAnimation forKey:@"expandToFill"];
 }
 
 #pragma mark - Contraction
 
-- (void)contractAndCircularizeWithDuration:(NSTimeInterval)duration
+- (void)moveToPosition:(CGPoint)position withDuration:(NSTimeInterval)duration
 {
-    CABasicAnimation *cornerRadius = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
-    cornerRadius.toValue = @(self.contractedBounds.size.width / 2.0);
+    UIBezierPath *path = [self spiralFromCenterPoint:CGPointAtCenterOfRect(self.expandedBounds)
+                                        toOuterPoint:position];
     
-    CABasicAnimation *bounds = [CABasicAnimation animationWithKeyPath:@"bounds"];
-    bounds.toValue = [NSValue valueWithCGRect:self.contractedBounds];
+    CAKeyframeAnimation *pathAnimation = [BPAnimationSupport positionAlongPath:path
+                                                                  withDuration:duration];
     
-    CAAnimationGroup *group = [CAAnimationGroup animation];
-    group.animations = @[bounds, cornerRadius];
-    group.duration = duration;
-    
-    [self.contentView.layer addAnimation:group forKey:@"contract"];
-    self.contentView.layer.cornerRadius = [cornerRadius.toValue floatValue];
-    self.contentView.layer.bounds = self.contractedBounds;
+    self.layer.position = position;
+    [self.layer addAnimation:pathAnimation forKey:@"spiralToEdge"];
 }
 
-- (void)contractVideoFeedLayerWithDuration:(NSTimeInterval)duration
+- (void)contractToSize:(CGSize)size andCircularizeWithDuration:(NSTimeInterval)duration
 {
-    CABasicAnimation *bounds = [CABasicAnimation animationWithKeyPath:@"bounds"];
-    CGFloat height = self.contractedBounds.size.height;
+    CGRect contractedBounds = CGRectMakeWithOriginAndSize(CGPointZero, size);
+    
+    CABasicAnimation *cornerRadiusAnimation = [BPAnimationSupport cornerRadiusFrom:0 to:size.width / 2.0 withDuration:duration];
+    
+    CABasicAnimation *boundsAnimation = [BPAnimationSupport boundsFrom:self.contentView.layer.bounds to:contractedBounds withDuration:duration];
+    
+    CAAnimationGroup *animationGroup = [BPAnimationSupport groupAnimations:@[cornerRadiusAnimation, boundsAnimation]
+                                                              withDuration:duration];
+    
+    self.contentView.layer.cornerRadius = size.width / 2.0;
+    self.contentView.layer.bounds = contractedBounds;
+    [self.contentView.layer addAnimation:animationGroup forKey:@"contract"];
+}
+
+- (void)contractVideoFeedLayerToSize:(CGSize)size withDuration:(NSTimeInterval)duration
+{
+    CGFloat height = size.height;
     CGFloat width = height * 4.0 / 3.0;
     CGRect contractedBounds = CGRectMake(0,0,width,height);
 
-    bounds.toValue = [NSValue valueWithCGRect:contractedBounds];
-    bounds.duration = duration;
+    CABasicAnimation *boundsAnimation = [BPAnimationSupport boundsFrom:self.videoFeedLayer.bounds to:contractedBounds withDuration:duration];
     
-    [self.videoFeedLayer addAnimation:bounds forKey:@"contract"];
     self.videoFeedLayer.bounds = contractedBounds;
+    [self.videoFeedLayer addAnimation:boundsAnimation forKey:@"contract"];
 }
 
 @end

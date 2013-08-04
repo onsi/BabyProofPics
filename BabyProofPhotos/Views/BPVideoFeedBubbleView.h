@@ -8,6 +8,8 @@
 
 #import "BPTappableCircularView.h"
 
+typedef void(^BPAnimationCompletion)(void);
+
 @interface BPVideoFeedBubbleView : BPTappableCircularView
 
 #pragma mark - Adding and removing the video feed
@@ -15,7 +17,8 @@
 - (CALayer *)removeVideoFeedLayer;
 
 #pragma mark - Animations
-- (void)expandToFillSuperviewWithDuration:(NSTimeInterval)duration;
-- (void)contractWithDuration:(NSTimeInterval)duration;
+- (void)expandToFillSuperviewWithDuration:(NSTimeInterval)duration completion:(BPAnimationCompletion)completion;
+
+- (void)contractToSize:(CGSize)size center:(CGPoint)center withDuration:(NSTimeInterval)duration completion:(BPAnimationCompletion)completion;
 
 @end
