@@ -49,7 +49,10 @@
 {
     [CATransaction begin];
     [CATransaction setCompletionBlock:completion];
-    [self moveToCenterWithDuration:duration];
+    [CATransaction setAnimationDuration:duration];
+    [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    
+    [self moveToPosition:CGPointAtCenterOfRect(self.expandedBounds) withDuration:duration];
     [self expandToFillSuperviewAndStraighenCornersWithDuration:duration];
     [self expandVideoFeedLayerWithDuration:duration];
     [CATransaction commit];
@@ -57,9 +60,11 @@
 
 - (void)contractToSize:(CGSize)size center:(CGPoint)center withDuration:(NSTimeInterval)duration completion:(BPAnimationCompletion)completion
 {
-    //PASS ME A COMPLETION BLOCK!
     [CATransaction begin];
     [CATransaction setCompletionBlock:completion];
+    [CATransaction setAnimationDuration:duration];
+    [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    
     [self moveToPosition:center withDuration:duration];
     [self contractToSize:size andCircularizeWithDuration:duration];
     [self contractVideoFeedLayerToSize:size withDuration:duration];
@@ -72,46 +77,12 @@
 {
     return self.superview.bounds;
 }
-
-- (UIBezierPath *)spiralFromOuterPoint:(CGPoint)outerPoint toCenterPoint:(CGPoint)centerPoint
+- (void)moveToPosition:(CGPoint)position withDuration:(NSTimeInterval)duration
 {
-    CGFloat bottomOfSpiral = centerPoint.y + self.expandedBounds.size.height * 0.3;
-    CGFloat edgeOfSpiral = centerPoint.x - 0.3 * (outerPoint.x - centerPoint.x);
-    CGFloat topOfSpiral = centerPoint.y - self.expandedBounds.size.height * 0.15;
+    CABasicAnimation *positionAnimation = [BPAnimationSupport positionFrom:self.layer.position to:position withDuration:duration];
     
-    CGPoint firstInflection = CGPointMake((outerPoint.x + edgeOfSpiral) / 2.0, bottomOfSpiral);
-    CGPoint secondInflection = CGPointMake(edgeOfSpiral, centerPoint.y);
-    CGPoint thirdInflection = CGPointMake((centerPoint.x + edgeOfSpiral) / 2.0, topOfSpiral);
-    
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:outerPoint];
-    [path addQuadCurveToPoint:firstInflection
-                 controlPoint:CGPointMake(outerPoint.x, firstInflection.y)];
-    [path addQuadCurveToPoint:secondInflection
-                 controlPoint:CGPointMake(secondInflection.x, firstInflection.y)];
-    [path addQuadCurveToPoint:thirdInflection
-                 controlPoint:CGPointMake(secondInflection.x, thirdInflection.y)];
-    [path addQuadCurveToPoint:centerPoint
-                 controlPoint:CGPointMake(centerPoint.x, secondInflection.y)];
-    
-    return path;
-}
-
-- (UIBezierPath *)spiralFromCenterPoint:(CGPoint)centerPoint toOuterPoint:(CGPoint)outerPoint
-{
-    return [[self spiralFromOuterPoint:outerPoint toCenterPoint:centerPoint] bezierPathByReversingPath];
-}
-
-- (void)moveToCenterWithDuration:(NSTimeInterval)duration
-{
-    UIBezierPath *path = [self spiralFromOuterPoint:self.layer.position
-                                      toCenterPoint:CGPointAtCenterOfRect(self.expandedBounds)];
-    
-    CAKeyframeAnimation *pathAnimation = [BPAnimationSupport positionAlongPath:path
-                                                                  withDuration:duration];
-
-    self.layer.position = CGPointAtCenterOfRect(self.expandedBounds);
-    [self.layer addAnimation:pathAnimation forKey:@"spiralToCenter"];
+    self.layer.position = position;
+    [self.layer addAnimation:positionAnimation forKey:@"moveToPosition"];
 }
 
 - (void)expandToFillSuperviewAndStraighenCornersWithDuration:(NSTimeInterval)duration
@@ -138,18 +109,6 @@
 }
 
 #pragma mark - Contraction
-
-- (void)moveToPosition:(CGPoint)position withDuration:(NSTimeInterval)duration
-{
-    UIBezierPath *path = [self spiralFromCenterPoint:CGPointAtCenterOfRect(self.expandedBounds)
-                                        toOuterPoint:position];
-    
-    CAKeyframeAnimation *pathAnimation = [BPAnimationSupport positionAlongPath:path
-                                                                  withDuration:duration];
-    
-    self.layer.position = position;
-    [self.layer addAnimation:pathAnimation forKey:@"spiralToEdge"];
-}
 
 - (void)contractToSize:(CGSize)size andCircularizeWithDuration:(NSTimeInterval)duration
 {

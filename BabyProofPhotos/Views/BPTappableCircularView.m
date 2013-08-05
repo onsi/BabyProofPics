@@ -65,9 +65,9 @@
 - (void)handleTapGestureRecognizer:(UITapGestureRecognizer *)recognizer
 {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        [self startPulsing];
+        // Started Tap
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-        [self stopPulsing];
+        // Ended Tap
         [self handleTap];
     }
 }
@@ -80,32 +80,6 @@
         [self.target performSelector:self.action
                           withObject:self];
 #pragma clang diagnostic pop
-    }
-}
-
-- (void)startPulsing
-{
-    self.isPulsing = YES;
-    [self pulse];
-}
-
-- (void)stopPulsing
-{
-    self.isPulsing = NO;
-}
-
-- (void)pulse
-{
-    if (self.isPulsing) {
-        [UIView animateWithDuration:0.6 delay:0 options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveEaseOut animations:^{
-            self.contentView.transform = CGAffineTransformMakeScale(1.07, 1.07);
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.6 delay:0 options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveEaseIn animations:^{
-                self.contentView.transform = CGAffineTransformMakeScale(1.0, 1.0);
-            } completion:^(BOOL finished) {
-                [self pulse];
-            }];
-        }];
     }
 }
 

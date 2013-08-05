@@ -69,8 +69,10 @@
 - (CAGradientLayer *)missingVideoFeedLayer
 {
     CAGradientLayer *layer = [CAGradientLayer layer];
-    layer.colors = @[(id)[[UIColor blueColor] CGColor], (id)[[UIColor whiteColor] CGColor]];
-    layer.locations = @[@0.2, @1];
+    layer.colors = @[(id)[[UIColor redColor] CGColor], (id)[[UIColor whiteColor] CGColor], (id)[[UIColor blueColor] CGColor]];
+    layer.locations = @[@0, @0.5, @1];
+    layer.startPoint = CGPointMake(0,0);
+    layer.endPoint = CGPointMake(1,1);
     return layer;
 }
 

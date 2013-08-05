@@ -21,6 +21,10 @@
                               to:(CGRect)toValue
                     withDuration:(NSTimeInterval)duration;
 
++ (CABasicAnimation *)positionFrom:(CGPoint)fromValue
+                                to:(CGPoint)toValue
+                      withDuration:(NSTimeInterval)duration;
+
 + (CAKeyframeAnimation *)positionAlongPath:(UIBezierPath *)path
                               withDuration:(NSTimeInterval)duration;
 

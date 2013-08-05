@@ -44,6 +44,19 @@
     return boundsAnimation;
 }
 
++ (CABasicAnimation *)positionFrom:(CGPoint)fromValue
+                                to:(CGPoint)toValue
+                      withDuration:(NSTimeInterval)duration
+{
+    CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fromValue = [NSValue valueWithCGPoint:fromValue];
+    positionAnimation.toValue = [NSValue valueWithCGPoint:toValue];
+    positionAnimation.duration = duration;
+    
+    return positionAnimation;
+}
+
+
 + (CAKeyframeAnimation *)positionAlongPath:(UIBezierPath *)path
                               withDuration:(NSTimeInterval)duration
 {
