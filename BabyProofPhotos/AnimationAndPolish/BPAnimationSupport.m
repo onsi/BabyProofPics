@@ -10,62 +10,56 @@
 
 @implementation BPAnimationSupport
 
-+ (CAAnimationGroup *)groupAnimations:(NSArray *)animations
-                         withDuration:(NSTimeInterval)duration
++ (NSString *)animationNameForKeyPath:(NSString *)keyPath
 {
-    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
-    animationGroup.animations = animations;
-    animationGroup.duration = duration;
-
-    return animationGroup;
+    return [NSString stringWithFormat:@"BP%@Animation", keyPath.capitalizedString];
 }
 
-+ (CABasicAnimation *)cornerRadiusFrom:(CGFloat)fromValue
-                                    to:(CGFloat)toValue
-                          withDuration:(NSTimeInterval)duration
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toValue:(NSValue *)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay
 {
-    CABasicAnimation *cornerRadiusAnimation = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
-    cornerRadiusAnimation.fromValue = @(fromValue);
-    cornerRadiusAnimation.toValue = @(toValue);
-    cornerRadiusAnimation.duration = duration;
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:keyPath];
+    animation.fromValue = [layer valueForKey:keyPath];
+    animation.toValue = toValue;
+    animation.duration = duration;
+    animation.fillMode = kCAFillModeBackwards;
+    animation.beginTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil] + delay;
+
+    [layer setValue:toValue forKey:keyPath];
+    [layer addAnimation:animation forKey:[self animationNameForKeyPath:keyPath]];
     
-    return cornerRadiusAnimation;
+    return animation;
 }
 
-+ (CABasicAnimation *)boundsFrom:(CGRect)fromValue
-                              to:(CGRect)toValue
-                    withDuration:(NSTimeInterval)duration
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toFloatValue:(CGFloat)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay
 {
-    CABasicAnimation *boundsAnimation = [CABasicAnimation animationWithKeyPath:@"bounds"];
-    boundsAnimation.fromValue = [NSValue valueWithCGRect:fromValue];
-    boundsAnimation.toValue = [NSValue valueWithCGRect:toValue];
-    boundsAnimation.duration = duration;
-    
-    return boundsAnimation;
+    return [self animateLayer:layer keyPath:keyPath toValue:@(toValue) withDuration:duration delay:delay];
 }
 
-+ (CABasicAnimation *)positionFrom:(CGPoint)fromValue
-                                to:(CGPoint)toValue
-                      withDuration:(NSTimeInterval)duration
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toPointValue:(CGPoint)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay
 {
-    CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-    positionAnimation.fromValue = [NSValue valueWithCGPoint:fromValue];
-    positionAnimation.toValue = [NSValue valueWithCGPoint:toValue];
-    positionAnimation.duration = duration;
-    
-    return positionAnimation;
+    return [self animateLayer:layer keyPath:keyPath toValue:[NSValue valueWithCGPoint:toValue] withDuration:duration delay:delay];
 }
 
-
-+ (CAKeyframeAnimation *)positionAlongPath:(UIBezierPath *)path
-                              withDuration:(NSTimeInterval)duration
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toRectValue:(CGRect)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay
 {
-    CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    pathAnimation.path = path.CGPath;
-    pathAnimation.calculationMode = @"cubicPaced";
-    pathAnimation.duration = duration;
-
-    return pathAnimation;
+    return [self animateLayer:layer keyPath:keyPath toValue:[NSValue valueWithCGRect:toValue] withDuration:duration delay:delay];
 }
+
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toFloatValue:(CGFloat)toValue withDuration:(NSTimeInterval)duration
+{
+    return [self animateLayer:layer keyPath:keyPath toFloatValue:toValue withDuration:duration delay:0];
+}
+
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toPointValue:(CGPoint)toValue withDuration:(NSTimeInterval)duration
+{
+    return [self animateLayer:layer keyPath:keyPath toPointValue:toValue withDuration:duration delay:0];
+}
+
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toRectValue:(CGRect)toValue withDuration:(NSTimeInterval)duration
+{
+    return [self animateLayer:layer keyPath:keyPath toRectValue:toValue withDuration:duration delay:0];
+}
+
+
 
 @end

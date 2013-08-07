@@ -10,7 +10,8 @@
 
 @interface BPTappableCircularView : UIView
 
-- (UIView *)contentView;
+- (CALayer *)contentLayer;
+- (CALayer *)circularMask;
 - (void)setTapTarget:(id)target action:(SEL)action;
 
 @end

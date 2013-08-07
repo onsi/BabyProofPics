@@ -10,22 +10,14 @@
 
 @interface BPAnimationSupport : NSObject
 
-+ (CAAnimationGroup *)groupAnimations:(NSArray *)animations
-                         withDuration:(NSTimeInterval)duration;
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toValue:(NSValue *)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay;
 
-+ (CABasicAnimation *)cornerRadiusFrom:(CGFloat)fromValue
-                                    to:(CGFloat)toValue
-                          withDuration:(NSTimeInterval)duration;
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toFloatValue:(CGFloat)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay;
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toPointValue:(CGPoint)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay;
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toRectValue:(CGRect)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay;
 
-+ (CABasicAnimation *)boundsFrom:(CGRect)fromValue
-                              to:(CGRect)toValue
-                    withDuration:(NSTimeInterval)duration;
-
-+ (CABasicAnimation *)positionFrom:(CGPoint)fromValue
-                                to:(CGPoint)toValue
-                      withDuration:(NSTimeInterval)duration;
-
-+ (CAKeyframeAnimation *)positionAlongPath:(UIBezierPath *)path
-                              withDuration:(NSTimeInterval)duration;
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toFloatValue:(CGFloat)toValue withDuration:(NSTimeInterval)duration;
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toPointValue:(CGPoint)toValue withDuration:(NSTimeInterval)duration;
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toRectValue:(CGRect)toValue withDuration:(NSTimeInterval)duration;
 
 @end

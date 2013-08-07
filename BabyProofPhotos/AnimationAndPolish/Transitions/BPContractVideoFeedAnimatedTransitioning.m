@@ -34,7 +34,7 @@
     if (self) {
         self.videoFeedBubble = videoFeedBubble;
         self.breezyBubblesSimulator = breezyBubblesSimulator;
-        self.transitionDuration = 2.0;
+        self.transitionDuration = 1.5;
         self.contractedSize = contractedSize;
         self.contractedCenter = contractedCenter;
     }

@@ -9,6 +9,7 @@
 #import "BPTappableCircularView.h"
 #import "BPCircularTapGestureRecognizer.h"
 #import <QuartzCore/QuartzCore.h>
+#import "BPMath.h"
 
 @interface BPTappableCircularView ()
 
@@ -43,12 +44,30 @@
 
 - (void)commonSetup
 {
-    self.contentView = [UIView new];
-    self.contentView.frame = self.bounds;
-    self.contentView.layer.cornerRadius = self.bounds.size.width / 2.0;
-    self.contentView.layer.masksToBounds = YES;
+    self.contentView = [[UIView alloc] initWithFrame:self.bounds];
+    [self setUpCircularMask];
     [self addSubview:self.contentView];
     self.backgroundColor = [UIColor clearColor];
+}
+
+- (void)setUpCircularMask
+{
+    self.contentView.layer.mask = [CALayer layer];
+    self.circularMask.backgroundColor = [[UIColor blackColor] CGColor];
+    self.circularMask.position = CGPointAtCenterOfRect(self.bounds);
+    self.circularMask.bounds = self.contentView.bounds;
+    self.circularMask.cornerRadius = self.bounds.size.width / 2.0;
+    self.circularMask.masksToBounds = YES;
+}
+
+- (CALayer *)contentLayer
+{
+    return self.contentView.layer;
+}
+
+- (CALayer *)circularMask
+{
+    return self.contentView.layer.mask;
 }
 
 - (void)setTapTarget:(id)target action:(SEL)action

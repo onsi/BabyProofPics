@@ -27,12 +27,12 @@
     
     self.videoFeedLayer.anchorPoint = CGPointMake(0,0);
     self.videoFeedLayer.position = CGPointMake(0, 0);
-
-    CGFloat height = self.contentView.bounds.size.height;
+    
+    CGFloat height = self.contentLayer.bounds.size.height;
     CGFloat width = height * 4.0 / 3.0;
     
     self.videoFeedLayer.bounds = CGRectMake(0,0,width,height);
-    [self.contentView.layer addSublayer:self.videoFeedLayer];
+    [self.contentLayer addSublayer:self.videoFeedLayer];
 }
 
 - (CALayer *)removeVideoFeedLayer
@@ -49,12 +49,28 @@
 {
     [CATransaction begin];
     [CATransaction setCompletionBlock:completion];
-    [CATransaction setAnimationDuration:duration];
     [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [CATransaction setDisableActions:YES];
     
-    [self moveToPosition:CGPointAtCenterOfRect(self.expandedBounds) withDuration:duration];
-    [self expandToFillSuperviewAndStraighenCornersWithDuration:duration];
-    [self expandVideoFeedLayerWithDuration:duration];
+    CGRect expandedBounds = self.superview.bounds;
+    CGPoint centerOfExpandedBounds = CGPointAtCenterOfRect(expandedBounds);
+    
+    CGFloat expandedMaskRadius = sqrtf(powf(expandedBounds.size.width / 2.0, 2.0) + powf(expandedBounds.size.height / 2.0, 2.0));
+    CGRect expandedMaskBounds = CGRectMakeWithOriginAndSize(CGPointZero, CGSizeMake(expandedMaskRadius * 2, expandedMaskRadius * 2));
+    CGPoint expandedMaskPosition = centerOfExpandedBounds;
+    
+    CGFloat maskExpansionDuration = duration;
+    CGFloat contentExpansionDuration = duration * (expandedBounds.size.height / expandedMaskRadius / 2.0) / 1.2;
+    
+
+    [BPAnimationSupport animateLayer:self.layer keyPath:@"position" toPointValue:centerOfExpandedBounds withDuration:contentExpansionDuration];
+    [BPAnimationSupport animateLayer:self.contentLayer keyPath:@"bounds" toRectValue:expandedBounds withDuration:contentExpansionDuration];
+    [BPAnimationSupport animateLayer:self.videoFeedLayer keyPath:@"bounds" toRectValue:expandedBounds withDuration:contentExpansionDuration];
+
+    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"position" toPointValue:expandedMaskPosition withDuration:contentExpansionDuration];
+    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"bounds" toRectValue:expandedMaskBounds withDuration:maskExpansionDuration];
+    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"cornerRadius" toFloatValue:expandedMaskRadius withDuration:maskExpansionDuration];
+    
     [CATransaction commit];
 }
 
@@ -62,80 +78,28 @@
 {
     [CATransaction begin];
     [CATransaction setCompletionBlock:completion];
-    [CATransaction setAnimationDuration:duration];
     [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [CATransaction setDisableActions:YES];
     
-    [self moveToPosition:center withDuration:duration];
-    [self contractToSize:size andCircularizeWithDuration:duration];
-    [self contractVideoFeedLayerToSize:size withDuration:duration];
-    [CATransaction commit];
-}
-
-#pragma mark - Expansion
-
-- (CGRect)expandedBounds
-{
-    return self.superview.bounds;
-}
-- (void)moveToPosition:(CGPoint)position withDuration:(NSTimeInterval)duration
-{
-    CABasicAnimation *positionAnimation = [BPAnimationSupport positionFrom:self.layer.position to:position withDuration:duration];
-    
-    self.layer.position = position;
-    [self.layer addAnimation:positionAnimation forKey:@"moveToPosition"];
-}
-
-- (void)expandToFillSuperviewAndStraighenCornersWithDuration:(NSTimeInterval)duration
-{
-    CABasicAnimation *cornerRadiusAnimation = [BPAnimationSupport cornerRadiusFrom:self.contentView.layer.cornerRadius to:0 withDuration:duration];
-
-    CABasicAnimation *boundsAnimation = [BPAnimationSupport boundsFrom:self.contentView.layer.bounds to:self.expandedBounds withDuration:duration];
-    
-    CAAnimationGroup *animationGroup = [BPAnimationSupport groupAnimations:@[cornerRadiusAnimation, boundsAnimation]
-                                                              withDuration:duration];
-
-    self.contentView.layer.cornerRadius = 0;
-    self.contentView.layer.bounds = self.expandedBounds;
-    [self.contentView.layer addAnimation:animationGroup forKey:@"expandToFill"];
-}
-
-
-- (void)expandVideoFeedLayerWithDuration:(NSTimeInterval)duration
-{
-    CABasicAnimation *boundsAnimation = [BPAnimationSupport boundsFrom:self.videoFeedLayer.bounds to:self.expandedBounds withDuration:duration];
-
-    self.videoFeedLayer.bounds = self.expandedBounds;
-    [self.videoFeedLayer addAnimation:boundsAnimation forKey:@"expandToFill"];
-}
-
-#pragma mark - Contraction
-
-- (void)contractToSize:(CGSize)size andCircularizeWithDuration:(NSTimeInterval)duration
-{
     CGRect contractedBounds = CGRectMakeWithOriginAndSize(CGPointZero, size);
+    CGRect contractedVideoFeedBounds = CGRectMakeWithOriginAndSize(CGPointZero, CGSizeMake(size.height * 4.0 / 3.0, size.height));
     
-    CABasicAnimation *cornerRadiusAnimation = [BPAnimationSupport cornerRadiusFrom:0 to:size.width / 2.0 withDuration:duration];
+    CGFloat contractedMaskRadius = size.width / 2.0;
+    CGPoint contractedMaskPosition = CGPointAtCenterOfRect(contractedBounds);
     
-    CABasicAnimation *boundsAnimation = [BPAnimationSupport boundsFrom:self.contentView.layer.bounds to:contractedBounds withDuration:duration];
+    CGFloat maskContractionDuration = duration;
+    CGFloat contentContractionDuration = duration * (self.contentLayer.bounds.size.height / self.circularMask.cornerRadius / 2.0) / 1.2;
+    CGFloat contentContractionBeginTime = maskContractionDuration - contentContractionDuration;
     
-    CAAnimationGroup *animationGroup = [BPAnimationSupport groupAnimations:@[cornerRadiusAnimation, boundsAnimation]
-                                                              withDuration:duration];
+    [BPAnimationSupport animateLayer:self.layer keyPath:@"position" toPointValue:center withDuration:contentContractionDuration delay:contentContractionBeginTime];
+    [BPAnimationSupport animateLayer:self.contentLayer keyPath:@"bounds" toRectValue:contractedBounds withDuration:contentContractionDuration delay:contentContractionBeginTime];
+    [BPAnimationSupport animateLayer:self.videoFeedLayer keyPath:@"bounds" toRectValue:contractedVideoFeedBounds withDuration:contentContractionDuration delay:contentContractionBeginTime];
     
-    self.contentView.layer.cornerRadius = size.width / 2.0;
-    self.contentView.layer.bounds = contractedBounds;
-    [self.contentView.layer addAnimation:animationGroup forKey:@"contract"];
-}
-
-- (void)contractVideoFeedLayerToSize:(CGSize)size withDuration:(NSTimeInterval)duration
-{
-    CGFloat height = size.height;
-    CGFloat width = height * 4.0 / 3.0;
-    CGRect contractedBounds = CGRectMake(0,0,width,height);
-
-    CABasicAnimation *boundsAnimation = [BPAnimationSupport boundsFrom:self.videoFeedLayer.bounds to:contractedBounds withDuration:duration];
-    
-    self.videoFeedLayer.bounds = contractedBounds;
-    [self.videoFeedLayer addAnimation:boundsAnimation forKey:@"contract"];
+    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"position" toPointValue:contractedMaskPosition withDuration:contentContractionDuration delay:contentContractionBeginTime];
+    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"bounds" toRectValue:contractedBounds withDuration:maskContractionDuration];
+    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"cornerRadius" toFloatValue:contractedMaskRadius withDuration:maskContractionDuration];
+ 
+    [CATransaction commit];
 }
 
 @end
