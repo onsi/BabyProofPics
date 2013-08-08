@@ -84,7 +84,9 @@
     CGRect contractedBounds = CGRectMakeWithOriginAndSize(CGPointZero, size);
     CGRect contractedVideoFeedBounds = CGRectMakeWithOriginAndSize(CGPointZero, CGSizeMake(size.height * 4.0 / 3.0, size.height));
     
-    CGFloat contractedMaskRadius = size.width / 2.0;
+    CGSize contractedMaskSize = CGSizeBySubtractingOffset(contractedBounds.size, self.circularMask.shadowRadius);
+    CGRect contractedMaskBounds = CGRectMakeWithOriginAndSize(CGPointZero, contractedMaskSize);
+    CGFloat contractedMaskRadius = contractedMaskSize.width / 2.0;
     CGPoint contractedMaskPosition = CGPointAtCenterOfRect(contractedBounds);
     
     CGFloat maskContractionDuration = duration;
@@ -96,7 +98,7 @@
     [BPAnimationSupport animateLayer:self.videoFeedLayer keyPath:@"bounds" toRectValue:contractedVideoFeedBounds withDuration:contentContractionDuration delay:contentContractionBeginTime];
     
     [BPAnimationSupport animateLayer:self.circularMask keyPath:@"position" toPointValue:contractedMaskPosition withDuration:contentContractionDuration delay:contentContractionBeginTime];
-    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"bounds" toRectValue:contractedBounds withDuration:maskContractionDuration];
+    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"bounds" toRectValue:contractedMaskBounds withDuration:maskContractionDuration];
     [BPAnimationSupport animateLayer:self.circularMask keyPath:@"cornerRadius" toFloatValue:contractedMaskRadius withDuration:maskContractionDuration];
  
     [CATransaction commit];

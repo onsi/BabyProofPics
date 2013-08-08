@@ -11,3 +11,4 @@
 CGFloat BPRandom(CGFloat min, CGFloat max);
 CGPoint CGPointAtCenterOfRect(CGRect rect);
 CGRect CGRectMakeWithOriginAndSize(CGPoint origin, CGSize size);
+CGSize CGSizeBySubtractingOffset(CGSize size, CGFloat offset);

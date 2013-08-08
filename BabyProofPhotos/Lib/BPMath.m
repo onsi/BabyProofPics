@@ -20,3 +20,8 @@ CGPoint CGPointAtCenterOfRect(CGRect rect) {
 CGRect CGRectMakeWithOriginAndSize(CGPoint origin, CGSize size) {
     return CGRectMake(origin.x, origin.y, size.width, size.height);
 }
+
+CGSize CGSizeBySubtractingOffset(CGSize size, CGFloat offset)
+{
+    return CGSizeMake(size.width - offset * 2, size.height - offset * 2);
+}
