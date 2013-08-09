@@ -52,12 +52,11 @@
 
 - (void)setUpCircularMask
 {
+
     self.contentView.layer.mask = [CALayer layer];
-    self.circularMask.backgroundColor = [[UIColor blackColor] CGColor];
     self.circularMask.position = CGPointAtCenterOfRect(self.bounds);
     self.circularMask.bounds = self.bounds;
-    self.circularMask.cornerRadius = self.bounds.size.width / 2.0;
-    self.circularMask.masksToBounds = NO;
+    self.circularMask.contents = (__bridge id)([[UIImage imageNamed:@"BubbleMask"] CGImage]);
 }
 
 - (CALayer *)contentLayer

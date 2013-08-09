@@ -68,7 +68,6 @@
     [BPAnimationSupport animateBoundsOfFinickyLayer:self.videoFeedLayer toValue:expandedBounds withDuration:contentExpansionDuration delay:0];
 
     [BPAnimationSupport animateLayer:self.circularMask keyPath:@"position" toPointValue:expandedMaskPosition withDuration:contentExpansionDuration];
-    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"cornerRadius" toFloatValue:expandedMaskRadius withDuration:maskExpansionDuration];
     [BPAnimationSupport animateLayer:self.circularMask keyPath:@"bounds" toRectValue:expandedMaskBounds withDuration:maskExpansionDuration];
     
     [CATransaction commit];
@@ -85,19 +84,17 @@
     CGRect contractedVideoFeedBounds = CGRectMakeWithOriginAndSize(CGPointZero, CGSizeMake(size.height * 4.0 / 3.0, size.height));
     
     
-    CGFloat contractedMaskRadius = contractedBounds.size.width / 2.0;
     CGPoint contractedMaskPosition = CGPointAtCenterOfRect(contractedBounds);
     
     CGFloat maskContractionDuration = duration;
-    CGFloat contentContractionDuration = duration * (self.contentLayer.bounds.size.height / self.circularMask.cornerRadius / 2.0) / 1.2;
-    CGFloat contentContractionBeginTime = maskContractionDuration - contentContractionDuration;
+    CGFloat contentContractionDuration = duration * (self.contentLayer.bounds.size.height / self.circularMask.bounds.size.height) / 1.2;
+    CGFloat contentContractionDelay = maskContractionDuration - contentContractionDuration;
     
-    [BPAnimationSupport animateLayer:self.layer keyPath:@"position" toPointValue:center withDuration:contentContractionDuration delay:contentContractionBeginTime];
-    [BPAnimationSupport animateLayer:self.contentLayer keyPath:@"bounds" toRectValue:contractedBounds withDuration:contentContractionDuration delay:contentContractionBeginTime];
-    [BPAnimationSupport animateBoundsOfFinickyLayer:self.videoFeedLayer toValue:contractedVideoFeedBounds withDuration:contentContractionDuration delay:contentContractionBeginTime];
+    [BPAnimationSupport animateLayer:self.layer keyPath:@"position" toPointValue:center withDuration:contentContractionDuration delay:contentContractionDelay];
+    [BPAnimationSupport animateLayer:self.contentLayer keyPath:@"bounds" toRectValue:contractedBounds withDuration:contentContractionDuration delay:contentContractionDelay];
+    [BPAnimationSupport animateBoundsOfFinickyLayer:self.videoFeedLayer toValue:contractedVideoFeedBounds withDuration:contentContractionDuration delay:contentContractionDelay];
     
-    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"position" toPointValue:contractedMaskPosition withDuration:contentContractionDuration delay:contentContractionBeginTime];
-    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"cornerRadius" toFloatValue:contractedMaskRadius withDuration:maskContractionDuration];
+    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"position" toPointValue:contractedMaskPosition withDuration:contentContractionDuration delay:contentContractionDelay];
     [BPAnimationSupport animateLayer:self.circularMask keyPath:@"bounds" toRectValue:contractedBounds withDuration:maskContractionDuration];
 
     [CATransaction commit];
