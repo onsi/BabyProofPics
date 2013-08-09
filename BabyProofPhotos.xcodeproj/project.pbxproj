@@ -24,6 +24,7 @@
 		E359616217A74ACA000B0B8C /* BPExpandVideoFeedAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E359616117A74ACA000B0B8C /* BPExpandVideoFeedAnimatedTransitioning.m */; };
 		E3A6B1F517964B7D008AF491 /* BPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A6B1F317964B7D008AF491 /* BPHomeViewController.m */; };
 		E3A6B1F617964B7D008AF491 /* BPHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3A6B1F417964B7D008AF491 /* BPHomeViewController.xib */; };
+		E3A801D817B32A7400AD03A7 /* BPRandomColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A801D717B32A7400AD03A7 /* BPRandomColorView.m */; };
 		E3AD52091796F06C00E81A9D /* BPTappableCircularView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD52081796F06C00E81A9D /* BPTappableCircularView.m */; };
 		E3AD520D17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD520B17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m */; };
 		E3AD520E17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3AD520C17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib */; };
@@ -71,6 +72,8 @@
 		E3A6B1F217964B7D008AF491 /* BPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPHomeViewController.h; sourceTree = "<group>"; };
 		E3A6B1F317964B7D008AF491 /* BPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPHomeViewController.m; sourceTree = "<group>"; };
 		E3A6B1F417964B7D008AF491 /* BPHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BPHomeViewController.xib; sourceTree = "<group>"; };
+		E3A801D617B32A7400AD03A7 /* BPRandomColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPRandomColorView.h; sourceTree = "<group>"; };
+		E3A801D717B32A7400AD03A7 /* BPRandomColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRandomColorView.m; sourceTree = "<group>"; };
 		E3AD52071796F06C00E81A9D /* BPTappableCircularView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPTappableCircularView.h; sourceTree = "<group>"; };
 		E3AD52081796F06C00E81A9D /* BPTappableCircularView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPTappableCircularView.m; sourceTree = "<group>"; };
 		E3AD520A17977F5700E81A9D /* BPFullScreenVideoFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFullScreenVideoFeedViewController.h; sourceTree = "<group>"; };
@@ -209,6 +212,8 @@
 				E3AD52081796F06C00E81A9D /* BPTappableCircularView.m */,
 				E359615D17A35603000B0B8C /* BPVideoFeedBubbleView.h */,
 				E359615E17A35603000B0B8C /* BPVideoFeedBubbleView.m */,
+				E3A801D617B32A7400AD03A7 /* BPRandomColorView.h */,
+				E3A801D717B32A7400AD03A7 /* BPRandomColorView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 				E358AF561794D85C00DDC769 /* BPAppDelegate.m in Sources */,
 				E3AD521B1798C68600E81A9D /* BPCircularTapGestureRecognizer.m in Sources */,
 				E3345CE817AD756C00604469 /* BPAnimationSupport.m in Sources */,
+				E3A801D817B32A7400AD03A7 /* BPRandomColorView.m in Sources */,
 				E3AD52091796F06C00E81A9D /* BPTappableCircularView.m in Sources */,
 				E3B49E4217962BC1002A779D /* BPVideoFeedProvider.m in Sources */,
 				E358AF521794D85C00DDC769 /* main.m in Sources */,

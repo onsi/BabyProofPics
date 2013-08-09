@@ -15,7 +15,7 @@
     return [NSString stringWithFormat:@"BP%@Animation", keyPath.capitalizedString];
 }
 
-+ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toValue:(NSValue *)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toValue:(id)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay
 {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:keyPath];
     animation.fromValue = [layer valueForKey:keyPath];

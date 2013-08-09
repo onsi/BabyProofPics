@@ -10,7 +10,7 @@
 
 @interface BPAnimationSupport : NSObject
 
-+ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toValue:(NSValue *)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay;
++ (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toValue:(id)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay;
 
 + (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toFloatValue:(CGFloat)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay;
 + (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toPointValue:(CGPoint)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay;

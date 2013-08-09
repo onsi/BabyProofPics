@@ -7,6 +7,7 @@
 //
 
 #import "BPHomeViewController.h"
+#import "BPRandomColorView.h"
 #import "BPVideoFeedBubbleView.h"
 #import "BPVideoFeedProvider.h"
 #import "BPFullScreenVideoFeedViewController.h"
@@ -36,12 +37,19 @@
     [super viewDidLoad];
     self.navigationController.delegate = self;
     [self setUpTapHandlers];
+    [self setUpRandomColorBackground];
     [self setUpVideoFeed];
     [self setUpBreezyBubblesSimulator];
     [self.videoFeedBubble installVideoFeedLayer:self.videoFeedLayer];
 }
 
 #pragma mark - View SetUp
+
+- (void)setUpRandomColorBackground
+{
+    BPRandomColorView *randomColorView =[[BPRandomColorView alloc] initWithFrame:self.view.bounds];
+    [self.view insertSubview:randomColorView atIndex:0];
+}
 
 - (void)setUpVideoFeed
 {
