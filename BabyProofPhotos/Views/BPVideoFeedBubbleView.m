@@ -65,11 +65,11 @@
 
     [BPAnimationSupport animateLayer:self.layer keyPath:@"position" toPointValue:centerOfExpandedBounds withDuration:contentExpansionDuration];
     [BPAnimationSupport animateLayer:self.contentLayer keyPath:@"bounds" toRectValue:expandedBounds withDuration:contentExpansionDuration];
-    [BPAnimationSupport animateLayer:self.videoFeedLayer keyPath:@"bounds" toRectValue:expandedBounds withDuration:contentExpansionDuration];
+    [BPAnimationSupport animateBoundsOfFinickyLayer:self.videoFeedLayer toValue:expandedBounds withDuration:contentExpansionDuration delay:0];
 
     [BPAnimationSupport animateLayer:self.circularMask keyPath:@"position" toPointValue:expandedMaskPosition withDuration:contentExpansionDuration];
-    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"bounds" toRectValue:expandedMaskBounds withDuration:maskExpansionDuration];
     [BPAnimationSupport animateLayer:self.circularMask keyPath:@"cornerRadius" toFloatValue:expandedMaskRadius withDuration:maskExpansionDuration];
+    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"bounds" toRectValue:expandedMaskBounds withDuration:maskExpansionDuration];
     
     [CATransaction commit];
 }
@@ -84,9 +84,8 @@
     CGRect contractedBounds = CGRectMakeWithOriginAndSize(CGPointZero, size);
     CGRect contractedVideoFeedBounds = CGRectMakeWithOriginAndSize(CGPointZero, CGSizeMake(size.height * 4.0 / 3.0, size.height));
     
-    CGSize contractedMaskSize = CGSizeBySubtractingOffset(contractedBounds.size, self.circularMask.shadowRadius);
-    CGRect contractedMaskBounds = CGRectMakeWithOriginAndSize(CGPointZero, contractedMaskSize);
-    CGFloat contractedMaskRadius = contractedMaskSize.width / 2.0;
+    
+    CGFloat contractedMaskRadius = contractedBounds.size.width / 2.0;
     CGPoint contractedMaskPosition = CGPointAtCenterOfRect(contractedBounds);
     
     CGFloat maskContractionDuration = duration;
@@ -95,12 +94,12 @@
     
     [BPAnimationSupport animateLayer:self.layer keyPath:@"position" toPointValue:center withDuration:contentContractionDuration delay:contentContractionBeginTime];
     [BPAnimationSupport animateLayer:self.contentLayer keyPath:@"bounds" toRectValue:contractedBounds withDuration:contentContractionDuration delay:contentContractionBeginTime];
-    [BPAnimationSupport animateLayer:self.videoFeedLayer keyPath:@"bounds" toRectValue:contractedVideoFeedBounds withDuration:contentContractionDuration delay:contentContractionBeginTime];
+    [BPAnimationSupport animateBoundsOfFinickyLayer:self.videoFeedLayer toValue:contractedVideoFeedBounds withDuration:contentContractionDuration delay:contentContractionBeginTime];
     
     [BPAnimationSupport animateLayer:self.circularMask keyPath:@"position" toPointValue:contractedMaskPosition withDuration:contentContractionDuration delay:contentContractionBeginTime];
-    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"bounds" toRectValue:contractedMaskBounds withDuration:maskContractionDuration];
     [BPAnimationSupport animateLayer:self.circularMask keyPath:@"cornerRadius" toFloatValue:contractedMaskRadius withDuration:maskContractionDuration];
- 
+    [BPAnimationSupport animateLayer:self.circularMask keyPath:@"bounds" toRectValue:contractedBounds withDuration:maskContractionDuration];
+
     [CATransaction commit];
 }
 

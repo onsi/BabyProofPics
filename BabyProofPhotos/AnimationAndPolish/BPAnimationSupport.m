@@ -60,6 +60,24 @@
     return [self animateLayer:layer keyPath:keyPath toRectValue:toValue withDuration:duration delay:0];
 }
 
++ (void)animateBoundsOfFinickyLayer:(CALayer *)layer toValue:(CGRect)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay
+{
+    // This is for AVCaptureVideoPreviewLayer which does not correctly scale
+    // the underlying video when assigned an explicit bounds animation
+    // but does correctly scale the video when assigned an implicit bounds animation
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [CATransaction begin];
+        [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+        [CATransaction setAnimationDuration:duration];
+        [CATransaction setDisableActions:NO];
+        
+        layer.bounds = toValue;
+        
+        [CATransaction commit];
+    });
+}
 
 
 @end

@@ -54,15 +54,9 @@
 {
     self.contentView.layer.mask = [CALayer layer];
     self.circularMask.backgroundColor = [[UIColor blackColor] CGColor];
-    self.circularMask.shadowColor = [[UIColor blackColor] CGColor];
-    self.circularMask.shadowRadius = 2.0;
-
-    self.circularMask.shadowOpacity = 1.0;
-    self.circularMask.shadowOffset = CGSizeZero;
     self.circularMask.position = CGPointAtCenterOfRect(self.bounds);
-    CGSize sizeWithoutShadow = CGSizeBySubtractingOffset(self.bounds.size, self.circularMask.shadowRadius);
-    self.circularMask.bounds = CGRectMakeWithOriginAndSize(CGPointZero, sizeWithoutShadow);
-    self.circularMask.cornerRadius = sizeWithoutShadow.width / 2.0;
+    self.circularMask.bounds = self.bounds;
+    self.circularMask.cornerRadius = self.bounds.size.width / 2.0;
     self.circularMask.masksToBounds = NO;
 }
 

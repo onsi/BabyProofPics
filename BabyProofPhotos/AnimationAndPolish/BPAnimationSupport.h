@@ -20,4 +20,6 @@
 + (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toPointValue:(CGPoint)toValue withDuration:(NSTimeInterval)duration;
 + (CABasicAnimation *)animateLayer:(CALayer *)layer keyPath:(NSString *)keyPath toRectValue:(CGRect)toValue withDuration:(NSTimeInterval)duration;
 
++ (void)animateBoundsOfFinickyLayer:(CALayer *)layer toValue:(CGRect)toValue withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay;
+
 @end
