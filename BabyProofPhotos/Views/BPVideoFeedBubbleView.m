@@ -9,6 +9,7 @@
 #import "BPVideoFeedBubbleView.h"
 #import "BPMath.h"
 #import "BPAnimationSupport.h"
+#import "BPSizer.h"
 
 @interface BPVideoFeedBubbleView ()
 
@@ -29,7 +30,7 @@
     self.videoFeedLayer.position = CGPointMake(0, 0);
     
     CGFloat height = self.contentLayer.bounds.size.height;
-    CGFloat width = height * 4.0 / 3.0;
+    CGFloat width = height * [BPSizer aspectRatio];
     
     self.videoFeedLayer.bounds = CGRectMake(0,0,width,height);
     [self.contentLayer addSublayer:self.videoFeedLayer];
@@ -81,7 +82,7 @@
     [CATransaction setDisableActions:YES];
     
     CGRect contractedBounds = CGRectMakeWithOriginAndSize(CGPointZero, size);
-    CGRect contractedVideoFeedBounds = CGRectMakeWithOriginAndSize(CGPointZero, CGSizeMake(size.height * 4.0 / 3.0, size.height));
+    CGRect contractedVideoFeedBounds = CGRectMakeWithOriginAndSize(CGPointZero, CGSizeMake(size.height * [BPSizer aspectRatio], size.height));
     
     
     CGPoint contractedMaskPosition = CGPointAtCenterOfRect(contractedBounds);

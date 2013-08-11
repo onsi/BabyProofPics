@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E3345CE817AD756C00604469 /* BPAnimationSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E3345CE717AD756C00604469 /* BPAnimationSupport.m */; };
+		E351DB3017B73E5500C7993A /* BPSizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E351DB2F17B73E5500C7993A /* BPSizer.m */; };
 		E358AF461794D85C00DDC769 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF451794D85C00DDC769 /* Foundation.framework */; };
 		E358AF481794D85C00DDC769 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF471794D85C00DDC769 /* CoreGraphics.framework */; };
 		E358AF4A1794D85C00DDC769 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E358AF491794D85C00DDC769 /* UIKit.framework */; };
@@ -23,11 +24,9 @@
 		E359615F17A35603000B0B8C /* BPVideoFeedBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E359615E17A35603000B0B8C /* BPVideoFeedBubbleView.m */; };
 		E359616217A74ACA000B0B8C /* BPExpandVideoFeedAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E359616117A74ACA000B0B8C /* BPExpandVideoFeedAnimatedTransitioning.m */; };
 		E3A6B1F517964B7D008AF491 /* BPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A6B1F317964B7D008AF491 /* BPHomeViewController.m */; };
-		E3A6B1F617964B7D008AF491 /* BPHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3A6B1F417964B7D008AF491 /* BPHomeViewController.xib */; };
 		E3A801D817B32A7400AD03A7 /* BPRandomColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A801D717B32A7400AD03A7 /* BPRandomColorView.m */; };
 		E3AD52091796F06C00E81A9D /* BPTappableCircularView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD52081796F06C00E81A9D /* BPTappableCircularView.m */; };
 		E3AD520D17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD520B17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m */; };
-		E3AD520E17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3AD520C17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib */; };
 		E3AD521B1798C68600E81A9D /* BPCircularTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD521A1798C68600E81A9D /* BPCircularTapGestureRecognizer.m */; };
 		E3AD5224179A1F9D00E81A9D /* BPScratch.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD5223179A1F9D00E81A9D /* BPScratch.m */; };
 		E3AD5228179AF84C00E81A9D /* BPBreezyBubblesSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AD5227179AF84C00E81A9D /* BPBreezyBubblesSimulator.m */; };
@@ -49,6 +48,8 @@
 /* Begin PBXFileReference section */
 		E3345CE617AD756C00604469 /* BPAnimationSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAnimationSupport.h; sourceTree = "<group>"; };
 		E3345CE717AD756C00604469 /* BPAnimationSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAnimationSupport.m; sourceTree = "<group>"; };
+		E351DB2E17B73E5500C7993A /* BPSizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPSizer.h; sourceTree = "<group>"; };
+		E351DB2F17B73E5500C7993A /* BPSizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPSizer.m; sourceTree = "<group>"; };
 		E358AF421794D85C00DDC769 /* BabyProofPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyProofPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E358AF451794D85C00DDC769 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E358AF471794D85C00DDC769 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -71,14 +72,12 @@
 		E359616117A74ACA000B0B8C /* BPExpandVideoFeedAnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPExpandVideoFeedAnimatedTransitioning.m; sourceTree = "<group>"; };
 		E3A6B1F217964B7D008AF491 /* BPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPHomeViewController.h; sourceTree = "<group>"; };
 		E3A6B1F317964B7D008AF491 /* BPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPHomeViewController.m; sourceTree = "<group>"; };
-		E3A6B1F417964B7D008AF491 /* BPHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BPHomeViewController.xib; sourceTree = "<group>"; };
 		E3A801D617B32A7400AD03A7 /* BPRandomColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPRandomColorView.h; sourceTree = "<group>"; };
 		E3A801D717B32A7400AD03A7 /* BPRandomColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRandomColorView.m; sourceTree = "<group>"; };
 		E3AD52071796F06C00E81A9D /* BPTappableCircularView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPTappableCircularView.h; sourceTree = "<group>"; };
 		E3AD52081796F06C00E81A9D /* BPTappableCircularView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPTappableCircularView.m; sourceTree = "<group>"; };
 		E3AD520A17977F5700E81A9D /* BPFullScreenVideoFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFullScreenVideoFeedViewController.h; sourceTree = "<group>"; };
 		E3AD520B17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFullScreenVideoFeedViewController.m; sourceTree = "<group>"; };
-		E3AD520C17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BPFullScreenVideoFeedViewController.xib; sourceTree = "<group>"; };
 		E3AD52191798C68600E81A9D /* BPCircularTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPCircularTapGestureRecognizer.h; sourceTree = "<group>"; };
 		E3AD521A1798C68600E81A9D /* BPCircularTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPCircularTapGestureRecognizer.m; sourceTree = "<group>"; };
 		E3AD5222179A1F9D00E81A9D /* BPScratch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPScratch.h; sourceTree = "<group>"; };
@@ -197,10 +196,8 @@
 			children = (
 				E3A6B1F217964B7D008AF491 /* BPHomeViewController.h */,
 				E3A6B1F317964B7D008AF491 /* BPHomeViewController.m */,
-				E3A6B1F417964B7D008AF491 /* BPHomeViewController.xib */,
 				E3AD520A17977F5700E81A9D /* BPFullScreenVideoFeedViewController.h */,
 				E3AD520B17977F5700E81A9D /* BPFullScreenVideoFeedViewController.m */,
-				E3AD520C17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -248,6 +245,8 @@
 				E3AD5223179A1F9D00E81A9D /* BPScratch.m */,
 				E3AD5229179B388C00E81A9D /* BPMath.h */,
 				E3AD522A179B388C00E81A9D /* BPMath.m */,
+				E351DB2E17B73E5500C7993A /* BPSizer.h */,
+				E351DB2F17B73E5500C7993A /* BPSizer.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -346,10 +345,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3A6B1F617964B7D008AF491 /* BPHomeViewController.xib in Resources */,
 				E358AF501794D85C00DDC769 /* InfoPlist.strings in Resources */,
 				E358AF581794D85C00DDC769 /* Images.xcassets in Resources */,
-				E3AD520E17977F5700E81A9D /* BPFullScreenVideoFeedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +368,7 @@
 				E3AD5224179A1F9D00E81A9D /* BPScratch.m in Sources */,
 				E359615F17A35603000B0B8C /* BPVideoFeedBubbleView.m in Sources */,
 				E3AD5228179AF84C00E81A9D /* BPBreezyBubblesSimulator.m in Sources */,
+				E351DB3017B73E5500C7993A /* BPSizer.m in Sources */,
 				E3DD069B17AB43A1007EC557 /* BPContractVideoFeedAnimatedTransitioning.m in Sources */,
 				E358AF561794D85C00DDC769 /* BPAppDelegate.m in Sources */,
 				E3AD521B1798C68600E81A9D /* BPCircularTapGestureRecognizer.m in Sources */,
@@ -504,6 +502,7 @@
 				INFOPLIST_FILE = "BabyProofPhotos/BabyProofPhotos-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -518,6 +517,7 @@
 				INFOPLIST_FILE = "BabyProofPhotos/BabyProofPhotos-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

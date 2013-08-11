@@ -12,13 +12,15 @@
 #import "BPVideoFeedProvider.h"
 #import "BPFullScreenVideoFeedViewController.h"
 #import "BPBreezyBubblesSimulator.h"
+#import "BPMath.h"
+#import "BPSizer.h"
 
 #import "BPExpandVideoFeedAnimatedTransitioning.h"
 #import "BPContractVideoFeedAnimatedTransitioning.h"
 
 @interface BPHomeViewController ()
 
-@property (nonatomic, weak) IBOutlet BPVideoFeedBubbleView *videoFeedBubble;
+@property (nonatomic, strong) BPVideoFeedBubbleView *videoFeedBubble;
 @property (nonatomic, strong) CALayer *videoFeedLayer;
 @property (nonatomic, strong) BPBreezyBubblesSimulator *breezyBubblesSimulator;
 
@@ -31,29 +33,33 @@
 
 - (void)viewDidLoad
 {
-    self.videoFeedBubbleSize = self.videoFeedBubble.bounds.size;
-    self.videoFeedBubbleCenter = self.videoFeedBubble.center;
-    
     [super viewDidLoad];
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
     self.navigationController.delegate = self;
+    [self setUpVideoFeedBubble];
     [self setUpTapHandlers];
     [self setUpRandomColorBackground];
-    [self setUpVideoFeed];
     [self setUpBreezyBubblesSimulator];
-    [self.videoFeedBubble installVideoFeedLayer:self.videoFeedLayer];
 }
 
 #pragma mark - View SetUp
+
+- (void)setUpVideoFeedBubble
+{
+    self.videoFeedBubbleSize = [BPSizer videoFeedBubbleSize];
+    self.videoFeedBubbleCenter = [BPSizer videoFeedBubbleCenter];
+    self.videoFeedBubble = [[BPVideoFeedBubbleView alloc] initWithFrame:CGRectMakeWithCenterAndSize(self.videoFeedBubbleCenter, self.videoFeedBubbleSize)];
+    [self.view addSubview:self.videoFeedBubble];
+
+    self.videoFeedLayer = [[BPVideoFeedProvider provider] videoFeedLayer];
+    [self.videoFeedBubble installVideoFeedLayer:self.videoFeedLayer];
+}
 
 - (void)setUpRandomColorBackground
 {
     BPRandomColorView *randomColorView =[[BPRandomColorView alloc] initWithFrame:self.view.bounds];
     [self.view insertSubview:randomColorView atIndex:0];
-}
-
-- (void)setUpVideoFeed
-{
-    self.videoFeedLayer = [[BPVideoFeedProvider provider] videoFeedLayer];
 }
 
 - (void)setUpTapHandlers

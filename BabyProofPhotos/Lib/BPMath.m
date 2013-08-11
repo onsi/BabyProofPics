@@ -21,6 +21,12 @@ CGRect CGRectMakeWithOriginAndSize(CGPoint origin, CGSize size) {
     return CGRectMake(origin.x, origin.y, size.width, size.height);
 }
 
+CGRect CGRectMakeWithCenterAndSize(CGPoint center, CGSize size)
+{
+    CGPoint origin = CGPointMake(center.x - size.width / 2.0, center.y - size.height / 2.0);
+    return CGRectMakeWithOriginAndSize(origin, size);
+}
+
 CGSize CGSizeBySubtractingOffset(CGSize size, CGFloat offset)
 {
     return CGSizeMake(size.width - offset * 2, size.height - offset * 2);

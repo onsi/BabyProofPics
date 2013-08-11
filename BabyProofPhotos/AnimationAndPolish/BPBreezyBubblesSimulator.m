@@ -8,11 +8,12 @@
 
 #import "BPBreezyBubblesSimulator.h"
 #import "BPMath.h"
+#import "BPSizer.h"
 
 @interface BPBreezyBubblesSimulator ()
 
 @property (nonatomic, strong) UIDynamicAnimator *animator;
-@property (nonatomic, strong) UIDynamicItemBehavior *elasticityBehavior;
+@property (nonatomic, strong) UIDynamicItemBehavior *propertiesBehavior;
 @property (nonatomic, strong) UICollisionBehavior *collisionBehavior;
 @property (nonatomic, strong) UIPushBehavior *windBehavior;
 
@@ -28,7 +29,7 @@
     if (self) {
         self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:referenceFrame];
         self.attachmentBehaviors = [NSMapTable weakToStrongObjectsMapTable];
-        [self setUpBubbleElasticityBehavior];
+        [self setUpBubblePropertiesBehavior];
         [self setUpCollisionsBehavior];
         [self setUpWindBehavior];
         [self blow];
@@ -38,7 +39,7 @@
 
 - (void)addBreezyItem:(id<UIDynamicItem>)item centeredAt:(CGPoint)center
 {
-    [self.elasticityBehavior addItem:item];
+    [self.propertiesBehavior addItem:item];
     [self.collisionBehavior addItem:item];
     [self.windBehavior addItem:item];
     [self attachItem:item toPoint:center];
@@ -46,7 +47,7 @@
 
 - (void)removeBreezyItem:(id<UIDynamicItem>)item
 {
-    [self.elasticityBehavior removeItem:item];
+    [self.propertiesBehavior removeItem:item];
     [self.collisionBehavior removeItem:item];
     [self.windBehavior removeItem:item];
     [self detachItem:item];
@@ -54,11 +55,12 @@
 
 #pragma mark - Bubble Behaviors
 
-- (void)setUpBubbleElasticityBehavior
+- (void)setUpBubblePropertiesBehavior
 {
-    self.elasticityBehavior = [[UIDynamicItemBehavior alloc] initWithItems:nil];
-    self.elasticityBehavior.elasticity = 0.7;
-    [self.animator addBehavior:self.elasticityBehavior];
+    self.propertiesBehavior = [[UIDynamicItemBehavior alloc] initWithItems:nil];
+    self.propertiesBehavior.elasticity = 0.7;
+    self.propertiesBehavior.density = [BPSizer density];
+    [self.animator addBehavior:self.propertiesBehavior];
 }
 
 - (void)setUpCollisionsBehavior
